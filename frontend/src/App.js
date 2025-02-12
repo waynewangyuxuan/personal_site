@@ -1,46 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import Timeline from './components/Timeline'; // Import the Timeline component
-import './App.css'; // Import CSS for fade effects
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar'; // Navigation Bar
+import Timeline from './components/Timeline'; // Timeline Component
+import Bio from './components/Bio'; // Bio Component
+import Contact from './components/Contact'; // Contact Page
+import './App.css'; // Global Styles
 
-function Home() {
-    const [fadeClass, setFadeClass] = useState('fade-in'); // Manage fade-in/out class
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        // Trigger fade-out after 1 second
-        const fadeOutTimer = setTimeout(() => {
-            setFadeClass('fade-out');
-        }, 1000);
-
-        // Navigate to timeline after 1.5 seconds
-        const navigateTimer = setTimeout(() => {
-            navigate('/timeline');
-        }, 1500);
-
-        // Cleanup timers
-        return () => {
-            clearTimeout(fadeOutTimer);
-            clearTimeout(navigateTimer);
-        };
-    }, [navigate]);
-
-    return (
-        <div className="home-container">
-            <h1 className={`welcome-message ${fadeClass}`}>
-                Welcome to my personal website!
-            </h1>
-        </div>
-    );
-}
-
+// App Component: Main application structure
 function App() {
     return (
         <Router>
             <div className="app-container">
+                {/* Persistent NavBar */}
+                <NavBar />
+                {/* Define Routes */}
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/" element={<Timeline />} /> {/* Set Timeline as Home */}
+                    <Route path="/bio" element={<Bio />} />
+                    <Route path="/contact" element={<Contact />} /> {/* Contact Route */}
                 </Routes>
             </div>
         </Router>

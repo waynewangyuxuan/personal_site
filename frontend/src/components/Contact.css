@@ -1,0 +1,60 @@
+/* General contact page styling */
+.contact-container {
+    max-width: 700px;
+    margin: 80px auto; /* Center the container */
+    padding: 30px;
+    background-color: #f5f3eb; /* Soft warm beige */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+/* Header styling */
+.contact-header {
+    font-size: 2.2rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif; /* Match navbar font */
+    color: #3b3a30; /* Earthy dark brown */
+    margin-bottom: 20px;
+}
+
+/* Contact details */
+.contact-details p {
+    font-size: 1rem;
+    margin: 15px 0;
+    color: #3b3a30; /* Earthy dark brown */
+    line-height: 1.6;
+}
+
+.contact-details strong {
+    font-weight: 600;
+    color: #5c5346; /* Deep warm brown */
+}
+
+/* Links */
+.contact-details a {
+    color: #8b5e3c; /* Warm earthy brown */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #a77450; /* Softer caramel brown on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 20px;
+    }
+
+    .contact-header {
+        font-size: 2rem;
+    }
+
+    .contact-details p {
+        font-size: 0.9rem;
+    }
+}

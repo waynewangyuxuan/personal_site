@@ -1,1 +1,3 @@
 # personal_site
+
+Notes:

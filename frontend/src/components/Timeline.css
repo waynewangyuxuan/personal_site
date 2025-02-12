@@ -1,175 +1,168 @@
 /* General wrapper */
 .timeline-wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 50px 20px;
-    background-color: #f9fafb;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #111827;
-    position: relative;
-  }
-  
-  /* Header styling */
-  .timeline-header {
-    font-size: 2.8rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 40px;
-    color: #1f2937;
-  }
-  
-  /* Timeline container */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 60px;
-    padding: 20px;
-  }
-  
-  /* Timeline vertical line */
-  .timeline-line {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background: #d1d5db;
-    transform: translateX(-50%);
-    z-index: 0;
-  }
-  
-  /* Timeline item */
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: #f4ede5; /* Soft earth tone */
+  font-family: 'Playfair Display', serif;
+  color: #3b3a30; /* Dark earthy brown */
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header styling */
+.timeline-header {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #3b3a30; /* Dark earthy brown */
+}
+
+/* Timeline container */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 60px;
+  padding: 20px;
+}
+
+/* Timeline vertical line */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #a69b84; /* Warm earthy gray */
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* Timeline item */
+.timeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 20px;
+  z-index: 1;
+}
+
+/* Flip card container */
+.timeline-card {
+  perspective: 1000px;
+  width: 420px;
+  height: 220px;
+  position: relative;
+}
+
+/* Flip animation */
+.timeline-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+/* Hover flip effect */
+.timeline-card:hover .timeline-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back Cards */
+.timeline-card-front,
+.timeline-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: background 0.3s ease;
+}
+
+/* Front side */
+.timeline-card-front {
+  background-color: #fffaf2; /* Light warm beige */
+  color: #3b3a30;
+}
+
+/* Back side */
+.timeline-card-back {
+  background-color: #5c5346; /* Dark muted brown */
+  color: #fefae0;
+  transform: rotateY(180deg);
+}
+
+/* Timeline text styles */
+.timeline-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.timeline-description {
+  font-size: 1rem;
+  color: #5c5346; /* Muted brown */
+  text-align: center;
+}
+
+/* Timeline date */
+.timeline-date {
+  font-size: 0.9rem;
+  color: #877f6d; /* Warm taupe */
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Timeline Icons */
+.timeline-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  background-color: #a67c52; /* Warm clay */
+  color: #fefae0;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-size: 1.5rem;
+}
+
+/* Position icons dynamically */
+.left-item .timeline-icon {
+  order: 2;
+  margin-left: 20px;
+}
+
+.right-item .timeline-icon {
+  order: 0;
+  margin-right: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .timeline-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    gap: 20px;
-    z-index: 1;
-  }
-  
-  /* Flip card container */
-  .timeline-card {
-    perspective: 1000px;
-    width: 400px;
-    height: 200px;
-    position: relative;
-  }
-  
-  .timeline-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
-  
-  .timeline-card:hover .timeline-card-inner {
-    transform: rotateY(180deg); /* Flip animation */
-  }
-  
-  /* Card front and back */
-  .timeline-card-front,
-  .timeline-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  /* Front side */
-  .timeline-card-front {
-    background-color: #ffffff;
-    color: #111827;
-  }
-  
-  /* Back side */
-  .timeline-card-back {
-    background-color: #1e3a8a;
-    color: #ffffff;
-    transform: rotateY(180deg);
-  }
-  
-  /* Text on the front */
-  .timeline-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  
-  .timeline-description {
-    font-size: 1rem;
-    color: #374151;
-    text-align: center;
-  }
-  
-  /* Text on the back */
-  .timeline-back-header {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .timeline-details {
-    font-size: 1rem;
-    line-height: 1.6;
-    text-align: center;
-  }
-  
-  /* Timeline date */
-  .timeline-date {
-    font-size: 0.9rem;
-    color: #6b7280;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  
-  /* Timeline icons */
-  .timeline-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background-color: #2563eb;
-    color: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-size: 1.5rem;
-  }
-  
-  /* Left and right item styles */
-  .left-item .timeline-icon {
-    order: 2;
-    margin-left: 20px;
-  }
-  
-  .right-item .timeline-icon {
-    order: 0;
-    margin-right: 20px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .timeline-item {
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
-  
-    .timeline-icon {
-      margin: 0 0 10px;
-    }
-  
-    .timeline-card {
-      width: 100%;
-    }
   }
+
+  .timeline-icon {
+      margin: 0 0 10px;
+  }
+
+  .timeline-card {
+      width: 100%;
+  }
+}
