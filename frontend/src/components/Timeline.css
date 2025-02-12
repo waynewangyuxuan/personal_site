@@ -13,11 +13,11 @@
 
 /* Header styling */
 .timeline-header {
-  font-size: 2.5rem;
+  font-size: 2.2rem; /* Slightly smaller */
   font-weight: 700;
   text-align: center;
-  margin-bottom: 40px;
-  color: #3b3a30; /* Dark earthy brown */
+  margin-bottom: 35px;
+  color: #3b3a30;
 }
 
 /* Timeline container */
@@ -54,8 +54,8 @@
 /* Flip card container */
 .timeline-card {
   perspective: 1000px;
-  width: 420px;
-  height: 220px;
+  width: 450px; /* Larger for readability */
+  height: 350px;
   position: relative;
 }
 
@@ -99,28 +99,49 @@
 
 /* Back side */
 .timeline-card-back {
-  background-color: #5c5346; /* Dark muted brown */
-  color: #fefae0;
+  background-color: #fefae0; /* Dark brown */
+  color: #fefae0; /* Off-white for contrast */
   transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px;
+  text-align: left;
 }
 
-/* Timeline text styles */
+/* Title on Front - Smaller */
 .timeline-title {
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Reduced from 1.4rem */
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
+/* Timeline description */
 .timeline-description {
-  font-size: 1rem;
-  color: #5c5346; /* Muted brown */
+  font-size: 0.9rem; /* Slightly smaller */
+  color: #5c5346;
   text-align: center;
+}
+
+/* Backside text - Bullet points & Smaller font */
+.timeline-card-back ul {
+  padding-left: 15px;
+  margin: 0;
+  list-style-type: disc; /* Bullet points */
+}
+
+.timeline-card-back li {
+  font-size: 0.25rem; /* Smaller text */
+  line-height: 0.5; /* Tighter spacing */
+  color: #fefae0; /* Light contrast */
+  margin-bottom: 0px; /* Less spacing */
 }
 
 /* Timeline date */
 .timeline-date {
-  font-size: 0.9rem;
-  color: #877f6d; /* Warm taupe */
+  font-size: 0.8rem; /* Smaller */
+  color: #877f6d;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -130,13 +151,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   background-color: #a67c52; /* Warm clay */
   color: #fefae0;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-size: 1.5rem;
+  font-size: 1.3rem; /* Slightly smaller */
 }
 
 /* Position icons dynamically */

@@ -1,0 +1,72 @@
+{
+    "name": "Yuxuan (Wayne) Wang",
+    "contact": {
+        "phone": "929-583-8556",
+        "email": "yw5954@nyu.edu",
+        "linkedin": "https://www.linkedin.com/in/wayne-wang-364174231/"
+    },
+    "education": {
+        "school": "New York University, Tandon School of Engineering",
+        "location": "Brooklyn, NY",
+        "degree": "Bachelor of Science in Computer Science, Math"
+    },
+    "technical_skills": [
+        "Python", "C++/C", "Linux", "GitHub",
+        "Search Engine Optimization", "Machine Learning",
+        "DevOps (Docker, Circle-CI, Clang)",
+        "Database Management (MySQL, NoSQL)",
+        "Web Development (Flask, SwiftUI)"
+    ],
+    "experiences": [
+        {
+            "title": "Researcher – Graph-Based Vocabulary Mismatch Solution in Information Retrieval",
+            "organization": "NYU Tandon School of Engineering",
+            "supervisor": "Professor Torsten Suel",
+            "duration": "June 2024 – Present",
+            "location": "Brooklyn, NY",
+            "responsibilities": [
+                "Researched graph-based search expansion for improving vocabulary mismatch in information retrieval.",
+                "Designed experiments with various retrieval methods (BM25, DeepImpact, SPLADE, TILDE) and analyzed performance.",
+                "Validated effectiveness using multiple dense models (TasB, ColBERT, DeBERTa, MiniLM)."
+            ]
+        },
+        {
+            "title": "Intern – Industrial Investment Data Analytics",
+            "organization": "Sinosure (Guangzhou) Equity Investment Fund Management Co., Ltd.",
+            "duration": "June 2023 - August 2023",
+            "location": "Guangzhou, China",
+            "responsibilities": [
+                "Built a scalable data pipeline for real-time financial analytics using AWS Lambda and Apache Kafka.",
+                "Applied ML/NLP models (XGBoost, BERT) to analyze Series B funding trends and predict profitability.",
+                "Developed dashboards with Tableau and Streamlit, improving decision-making efficiency."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "ShadowDash (Open Source Development)",
+            "duration": "September 2024 - Present",
+            "responsibilities": [
+                "Developed a C-based declarative language to optimize Ninja build processes, improving efficiency.",
+                "Enhanced parallel compilation and automated testing, achieving up to a 2x speedup."
+            ]
+        },
+        {
+            "title": "DTCC Lab - AI-Powered Code Generation",
+            "duration": "September 2023 - May 2024",
+            "responsibilities": [
+                "Engineered AI-driven prompts for Python code generation using ChatGPT API.",
+                "Achieved 80%+ execution accuracy for structured prompts, optimizing LLM performance."
+            ]
+        },
+        {
+            "title": "ContextWIN: Neural Model for Restless Bandits",
+            "duration": "September 2023 - December 2023",
+            "responsibilities": [
+                "Developed ContextWIN to enhance decision-making in recommendation systems.",
+                "Proved theoretical robustness of NeurWIN and ContextWIN for real-world applications."
+            ],
+            "link": "https://arxiv.org/abs/2410.09781"
+        }
+    ]
+}
