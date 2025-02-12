@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
@@ -8,7 +9,7 @@ from scripts.seed import seed_data  # Import seed_data function
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///site.db")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     CORS(app)
 
@@ -31,6 +32,5 @@ def create_app():
 
     return app
 
-if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True, port=5001)
+# This ensures Gunicorn can run the app
+app = create_app()
