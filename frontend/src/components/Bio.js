@@ -6,7 +6,7 @@ function Bio() {
     return (
         <div className="bio-container">
             <div className="bio-content">
-                <img src={headshot} alt="Wayne Wang" className="bio-image" />
+                <img src={headshot} alt="Wayne Wang 王宇轩" className="bio-image" />
                 <div className="bio-text">
                     <h2>Wayne Wang</h2>
                     <p>
