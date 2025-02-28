@@ -2,6 +2,7 @@ import React from "react";
 import "./Bio.css";
 import headshot from "../assets/headshot.jpg"; // Add your headshot image inside the `assets` folder
 
+// Test comment for GitHub Actions deployment verification
 function Bio() {
     return (
         <div className="bio-container">
