@@ -16,7 +16,8 @@ function Timeline() {
     useEffect(() => {
         const loadTimeline = async () => {
             try {
-                const response = await fetch("/seeder.json");
+                const basePath = process.env.PUBLIC_URL || "";
+                const response = await fetch(`${basePath}/seeder.json`);
                 const data = await response.json();
                 setExperiences(data.experiences);
                 setProjects(data.projects);

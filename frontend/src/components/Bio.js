@@ -10,9 +10,13 @@ function Bio() {
                 <div className="bio-text">
                     <h2>Wayne Wang</h2>
                     <p>
-                        I am a computer scientist passionate about search engines, information retrieval, and system design.
-                        Currently studying at NYU, I specialize in optimizing retrieval algorithms, database indexing, and
-                        scalable system architecture. My goal is to bridge **efficiency and innovation** in information access.
+                        I'm Yuxuan (Wayne) Wang, a computer science researcher and engineer.
+                    </p>
+                    <p>
+                        With experience in search algorithms, large-scale data processing, and software performance tuning, I enjoy bridging the gap between theoretical insights and real-world applications. My projects range from improving search ranking algorithms to optimizing build systems and developing scalable data pipelines.
+                    </p>
+                    <p>
+                        I'm driven by curiosity and a desire to push the limits of efficiency and intelligence in computing. If you're interested in my work, feel free to explore my projects and research!
                     </p>
                 </div>
             </div>

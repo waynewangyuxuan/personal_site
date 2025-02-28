@@ -99,14 +99,35 @@
 
 /* Back side */
 .timeline-card-back {
-  background-color: #fefae0; /* Dark brown */
-  color: #fefae0; /* Off-white for contrast */
+  background: #f8f5f2;
   transform: rotateY(180deg);
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 10px;
-  text-align: left;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;  /* Reverted back to Playfair Display */
+}
+
+.timeline-card-back h3 {
+  margin-bottom: 15px;
+  color: #3b3a30;
+  font-family: 'Playfair Display', serif;
+}
+
+.timeline-card-back p {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: #5c5b54;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.timeline-card-back p::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #3b3a30;
 }
 
 /* Title on Front - Smaller */
