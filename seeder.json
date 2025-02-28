@@ -19,54 +19,74 @@
     ],
     "experiences": [
         {
-            "title": "Researcher – Graph-Based Vocabulary Mismatch Solution in Information Retrieval",
-            "organization": "NYU Tandon School of Engineering",
-            "supervisor": "Professor Torsten Suel",
-            "duration": "June 2024 – Present",
-            "location": "Brooklyn, NY",
+            "duration": "Expected May 2026",
+            "title": "Bachelor of Science/Master of Science in Computer Science, Math",
+            "organization": "New York University, Tandon School of Engineering",
             "responsibilities": [
-                "Researched graph-based search expansion for improving vocabulary mismatch in information retrieval.",
-                "Designed experiments with various retrieval methods (BM25, DeepImpact, SPLADE, TILDE) and analyzed performance.",
-                "Validated effectiveness using multiple dense models (TasB, ColBERT, DeBERTa, MiniLM)."
-            ]
+                "GPA: 3.944",
+                "Focus on Algorithmic Machine Learning and Data Science",
+                "Studies in Network Security, Computer Networking, and Data Structures",
+                "Coursework in Computer Architecture, Database Systems, and Operating Systems"
+            ],
+            "icon": "graduation-cap"
         },
         {
-            "title": "Intern – Industrial Investment Data Analytics",
-            "organization": "Sinosure (Guangzhou) Equity Investment Fund Management Co., Ltd.",
-            "duration": "June 2023 - August 2023",
-            "location": "Guangzhou, China",
+            "duration": "June 2024 - Present",
+            "title": "Researcher - Graph-Based Vocabulary Mismatch Solution",
+            "organization": "New York University, Tandon School of Engineering",
             "responsibilities": [
-                "Built a scalable data pipeline for real-time financial analytics using AWS Lambda and Apache Kafka.",
-                "Applied ML/NLP models (XGBoost, BERT) to analyze Series B funding trends and predict profitability.",
-                "Developed dashboards with Tableau and Streamlit, improving decision-making efficiency."
-            ]
+                "Investigated graph-based neighbor search and expansion to address vocabulary mismatch in information retrieval",
+                "Designed experimental setup evaluating LADR's efficiency in reranking using various initial sets of 200-1000 passages",
+                "Testing with multiple dense models (FastB, ColBERT, DeBERTa, and MiniLM) demonstrated pool-based ranking effectiveness",
+                "Implemented KNN and HNSW graph-building methods for efficient vocabulary mismatch handling"
+            ],
+            "icon": "briefcase"
+        },
+        {
+            "duration": "June 2023 - August 2023",
+            "title": "Industrial Investment Data Analytics Internship",
+            "organization": "Sinosure (Guangzhou) Equity Investment Fund Management Co., Ltd.",
+            "responsibilities": [
+                "Designed a cloud-native, scalable data pipeline using AWS Lambda, Apache Kafka, and DynamoDB",
+                "Developed ML-driven investment analytics framework using XGBoost and BERT",
+                "Created interactive dashboards using Tableau and Streamlit for visualizing funding trends",
+                "Implemented real-time extraction and analysis of Series B funding data in EDA sector"
+            ],
+            "icon": "briefcase"
+        },
+        {
+            "duration": "September 2023 - May 2024",
+            "title": "AI Research Assistant",
+            "organization": "DTCC Lab-The Future of Coding with AI",
+            "responsibilities": [
+                "Designed and optimized AI-driven prompts using ChatGPT 3.5/4 API for Python code generation",
+                "Achieved over 80% benchmark in structured prompts execution",
+                "Focused on complex data manipulation and algorithmic problem-solving challenges",
+                "Enhanced LLM precision and efficiency in automated coding workflows"
+            ],
+            "icon": "briefcase"
         }
     ],
     "projects": [
         {
-            "title": "ShadowDash (Open Source Development)",
             "duration": "September 2024 - Present",
+            "title": "ShadowDash (Open Source Development)",
             "responsibilities": [
-                "Developed a C-based declarative language to optimize Ninja build processes, improving efficiency.",
-                "Enhanced parallel compilation and automated testing, achieving up to a 2x speedup."
+                "Redefined build configuration by developing a C-based declarative language replacing ninja files",
+                "Engineered advanced optimizations achieving up to 2x speedup for LLVM manifests",
+                "Implemented direct in-memory graph construction for efficient parsing",
+                "Streamlined CI/CD pipelines with Circle-CI for automated testing and deployment"
             ]
         },
         {
-            "title": "DTCC Lab - AI-Powered Code Generation",
-            "duration": "September 2023 - May 2024",
-            "responsibilities": [
-                "Engineered AI-driven prompts for Python code generation using ChatGPT API.",
-                "Achieved 80%+ execution accuracy for structured prompts, optimizing LLM performance."
-            ]
-        },
-        {
-            "title": "ContextWIN: Neural Model for Restless Bandits",
             "duration": "September 2023 - December 2023",
+            "title": "ContextWIN: Neural Model For Restless Bandits",
             "responsibilities": [
-                "Developed ContextWIN to enhance decision-making in recommendation systems.",
-                "Proved theoretical robustness of NeurWIN and ContextWIN for real-world applications."
-            ],
-            "link": "https://arxiv.org/abs/2410.09781"
+                "Developed advanced architecture enhancing Neural Whittle Index Network",
+                "Implemented reinforcement learning with mixture-of-experts approach for dynamic environments",
+                "Created theoretical framework for complex decision-making with contextual data",
+                "Published research paper on arxiv.org"
+            ]
         }
     ]
 }
