@@ -2,34 +2,24 @@
     "name": "Yuxuan (Wayne) Wang",
     "contact": {
         "phone": "929-583-8556",
-        "email": "yw5954@nyu.edu",
-        "linkedin": "https://www.linkedin.com/in/wayne-wang-364174231/"
+        "email": "yw5629@nyu.edu",
+        "linkedin": "https://www.linkedin.com/in/yuxuan-wayne-wang"
     },
     "education": {
         "school": "New York University, Tandon School of Engineering",
         "location": "Brooklyn, NY",
-        "degree": "Bachelor of Science in Computer Science, Math"
+        "degree": "Bachelor of Science/Master of Science in Computer Science, Math"
     },
     "technical_skills": [
         "Python", "C++/C", "Linux", "GitHub",
         "Search Engine Optimization", "Machine Learning",
         "DevOps (Docker, Circle-CI, Clang)",
         "Database Management (MySQL, NoSQL)",
-        "Web Development (Flask, SwiftUI)"
+        "Web Development (Flask, SwiftUI)",
+        "AWS (Lambda, DynamoDB)", "Apache Kafka",
+        "XGBoost", "BERT", "Tableau", "Streamlit"
     ],
     "experiences": [
-        {
-            "duration": "Expected May 2026",
-            "title": "Bachelor of Science/Master of Science in Computer Science, Math",
-            "organization": "New York University, Tandon School of Engineering",
-            "responsibilities": [
-                "GPA: 3.944",
-                "Focus on Algorithmic Machine Learning and Data Science",
-                "Studies in Network Security, Computer Networking, and Data Structures",
-                "Coursework in Computer Architecture, Database Systems, and Operating Systems"
-            ],
-            "icon": "graduation-cap"
-        },
         {
             "duration": "June 2024 - Present",
             "title": "Researcher - Graph-Based Vocabulary Mismatch Solution",
@@ -84,8 +74,7 @@
             "responsibilities": [
                 "Developed advanced architecture enhancing Neural Whittle Index Network",
                 "Implemented reinforcement learning with mixture-of-experts approach for dynamic environments",
-                "Created theoretical framework for complex decision-making with contextual data",
-                "Published research paper on arxiv.org"
+                "Created theoretical framework for complex decision-making with contextual data"
             ]
         }
     ]
