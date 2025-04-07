@@ -27,7 +27,7 @@
             "responsibilities": [
                 "Investigated graph-based neighbor search and expansion to address vocabulary mismatch in information retrieval",
                 "Designed experimental setup evaluating LADR's efficiency in reranking using various initial sets of 200-1000 passages",
-                "Testing with multiple dense models (FastB, ColBERT, DeBERTa, and MiniLM) demonstrated pool-based ranking effectiveness",
+                "Testing with multiple dense models (TasB, ColBERT, DeBERTa, E5, and MiniLM) demonstrated pool-based ranking effectiveness",
                 "Implemented KNN and HNSW graph-building methods for efficient vocabulary mismatch handling"
             ],
             "icon": "briefcase"
@@ -38,7 +38,7 @@
             "organization": "Sinosure (Guangzhou) Equity Investment Fund Management Co., Ltd.",
             "responsibilities": [
                 "Designed a cloud-native, scalable data pipeline using AWS Lambda, Apache Kafka, and DynamoDB",
-                "Developed ML-driven investment analytics framework using XGBoost and BERT",
+                "Developed ML-driven investment analytics framework using BERT",
                 "Created interactive dashboards using Tableau and Streamlit for visualizing funding trends",
                 "Implemented real-time extraction and analysis of Series B funding data in EDA sector"
             ],
