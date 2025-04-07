@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaGraduationCap, FaBriefcase, FaProjectDiagram } from "react-icons/fa";
 import Bio from "./Bio"; // Import the Bio component
+import Education from "./Education"; // Import the Education component
 import "./Timeline.css";
 
 const iconMapping = {
@@ -19,7 +20,13 @@ function Timeline() {
                 const basePath = process.env.PUBLIC_URL || "";
                 const response = await fetch(`${basePath}/seeder.json`);
                 const data = await response.json();
-                setExperiences(data.experiences);
+                
+                // Filter out education entries from experiences
+                const filteredExperiences = data.experiences.filter(
+                    exp => exp.icon !== "graduation-cap"
+                );
+                
+                setExperiences(filteredExperiences);
                 setProjects(data.projects);
             } catch (error) {
                 console.error("Error fetching timeline:", error);
@@ -32,6 +39,9 @@ function Timeline() {
         <div className="timeline-wrapper">
             {/* Bio Section Above Timeline */}
             <Bio />
+            
+            {/* Education Section */}
+            <Education />
 
             {/* Experience Section */}
             <h1 className="timeline-header">Experience</h1>
