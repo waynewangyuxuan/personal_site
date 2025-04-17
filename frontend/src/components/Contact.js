@@ -19,7 +19,7 @@ function Contact() {
                 <p>
                     <strong>LinkedIn:</strong>{' '}
                     <a
-                        href="https://www.linkedin.com/in/wayne-wang-364174231/"
+                        href="https://www.linkedin.com/in/yuxuan-wang-364174231/"
                         target="_blank"
                         rel="noreferrer"
                     >
