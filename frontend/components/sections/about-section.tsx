@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { siteConfig } from "@/constants/config"
 import CustomFontText from "@/components/animations/custom-font-text"
+import { getImagePath } from "@/lib/image"
 
 export default function AboutSection() {
   return (
@@ -15,7 +16,7 @@ export default function AboutSection() {
           <div className="flex justify-center">
             <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-primary">
               <Image
-                src="/headshot.jpg"
+                src={getImagePath("/headshot.jpg")}
                 alt={siteConfig.name}
                 fill
                 className="object-cover"

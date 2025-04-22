@@ -5,6 +5,7 @@ import { Github } from "lucide-react"
 import InteractiveCard from "@/components/animations/interactive-card"
 import { projects } from "@/constants/projects"
 import CustomFontText from "@/components/animations/custom-font-text"
+import { getImagePath } from "@/lib/image"
 
 export default function ProjectsSection() {
   return (
@@ -21,7 +22,7 @@ export default function ProjectsSection() {
               <Card className="overflow-hidden h-full border-2 hover:border-primary/50 transition-colors">
                 <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src={project.image || "/placeholder.svg"}
+                    src={getImagePath(project.image || "/placeholder.svg")}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-110"

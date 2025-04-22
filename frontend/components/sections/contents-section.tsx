@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import InteractiveCard from "@/components/animations/interactive-card"
 import CustomFontText from "@/components/animations/custom-font-text"
 import { contentItems } from "@/constants/contents"
+import { getImagePath } from "@/lib/image"
 
 export default function ContentsSection() {
   // Map content types to colors
@@ -31,7 +32,7 @@ export default function ContentsSection() {
               <Card className="overflow-hidden h-full border-2 hover:border-primary/50 transition-colors">
                 <div className="relative aspect-video overflow-hidden">
                   <Image
-                    src={item.image || "/placeholder.svg"}
+                    src={getImagePath(item.image || "/placeholder.svg")}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-300 hover:scale-110"

@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import CustomFontText from "@/components/animations/custom-font-text";
+import { getImagePath } from "@/lib/image";
 
 interface Experience {
   company: string;
@@ -89,7 +90,7 @@ export function ExperienceSection() {
                   {exp.image && (
                     <div className="w-[72px] h-[72px] relative flex-shrink-0 opacity-40 transition-opacity duration-300 group-hover:opacity-100 aspect-square">
                       <Image
-                        src={exp.image}
+                        src={getImagePath(exp.image)}
                         alt={`${exp.company} logo`}
                         fill
                         className="object-contain"
