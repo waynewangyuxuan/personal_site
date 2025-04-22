@@ -33,19 +33,6 @@ const experiences: Experience[] = [
     image: "/nyu-logo.png"
   },
   {
-    company: "CITIC Poly Fund",
-    role: "Data Analyst Intern",
-    period: "June 2023 - August 2023",
-    location: "Guangzhou, China",
-    description: [
-      "Led the development of a structured investment news processing system by integrating Wind data and web crawlers; extracted key fields such as company names, funding rounds, amounts, and investors; enriched company profiles using financial indicators (P/E ratio, revenue, valuation) to improve data quality.",
-      "Designed semantic analysis and event extraction modules using a Chinese BERT model for sentiment classification, keyword aggregation, summary generation, and news type labeling; output results in a unified JSON format and pushed them to Kafka for daily reports and frontend display.",
-      "Prototyped a visualization component using Streamlit, supporting word clouds, investor rankings, label distribution charts, and news card previews; contributed to the standardization of data formats and field definitions across frontend and backend systems.",
-    ],
-    technologies: ["Machine Learning", "Web Scraping", "Data Engineering", "Python", "AWS", "NoSQL", "NLP"],
-    image: "/CITIC-logo.png"
-  },
-  {
     company: "TripPlanner",
     role: "Full Stack Developer",
     period: "September 2024 - Present",
@@ -70,6 +57,19 @@ const experiences: Experience[] = [
     ],
     technologies: ["Build Optimization", "C", "CI/CD Deployment"],
     image: "/shadowdash-logo.png"
+  },
+  {
+    company: "CITIC Poly Fund",
+    role: "Data Analyst Intern",
+    period: "June 2023 - August 2023",
+    location: "Guangzhou, China",
+    description: [
+      "Led the development of a structured investment news processing system by integrating Wind data and web crawlers; extracted key fields such as company names, funding rounds, amounts, and investors; enriched company profiles using financial indicators (P/E ratio, revenue, valuation) to improve data quality.",
+      "Designed semantic analysis and event extraction modules using a Chinese BERT model for sentiment classification, keyword aggregation, summary generation, and news type labeling; output results in a unified JSON format and pushed them to Kafka for daily reports and frontend display.",
+      "Prototyped a visualization component using Streamlit, supporting word clouds, investor rankings, label distribution charts, and news card previews; contributed to the standardization of data formats and field definitions across frontend and backend systems.",
+    ],
+    technologies: ["Machine Learning", "Web Scraping", "Data Engineering", "Python", "AWS", "NoSQL", "NLP"],
+    image: "/CITIC-logo.png"
   },
 ];
 
