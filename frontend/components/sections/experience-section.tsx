@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import CustomFontText from "@/components/animations/custom-font-text";
 
 interface Experience {
   company: string;
@@ -75,7 +76,11 @@ export function ExperienceSection() {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
+        <CustomFontText
+          text="My Experience"
+          className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+          interval={1500}
+        />
         <div className="space-y-8">
           {experiences.map((exp, index) => (
             <Card key={index} className="p-6 hover:shadow-lg transition-shadow group">
