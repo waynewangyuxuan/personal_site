@@ -4,6 +4,7 @@ import SkillsSection from "@/components/sections/skills-section"
 import ProjectsSection from "@/components/sections/projects-section"
 import ContentsSection from "@/components/sections/contents-section"
 import ContactSection from "@/components/sections/contact-section"
+import { ExperienceSection } from "@/components/sections/experience-section"
 import ScrollToTop from "@/components/ui/scroll-to-top"
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <SkillsSection />
+      <ExperienceSection />
       <ProjectsSection />
       <ContentsSection />
       <ContactSection />

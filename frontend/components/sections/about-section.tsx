@@ -15,7 +15,7 @@ export default function AboutSection() {
           <div className="flex justify-center">
             <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-primary">
               <Image
-                src="/placeholder.svg?height=320&width=320"
+                src="/headshot.jpg"
                 alt={siteConfig.name}
                 fill
                 className="object-cover"
@@ -25,16 +25,20 @@ export default function AboutSection() {
           </div>
           <div className="space-y-4">
             <p className="text-lg">
-              Hello! I'm {siteConfig.name}, a passionate web developer with a keen eye for design and a love for
-              creating seamless user experiences.
+              Hello! I'm {siteConfig.name}. I am a full-stack developer. My specific skillset is shown down below, so I am not going to repeat them here, but I want to share two things that I value the most as a developer:
+              <ul>
+                <li>
+                  <strong>A Product Mindset</strong>: understand, knows, and believes in what they are building.
+                </li>
+                <li>
+                  <strong>Design Good System</strong>: never settle on existing solutions, always aim for more efficient, scalable, and elegant systems.
+                </li>
+              </ul>
+              <br />
+              Well, professionally speaking, I am figuring out things, so I have a very broad range of interests right now, including Web3 development in Defi, AI agents, data engineering, search engine optimization, and a little bit of quant dev. 
             </p>
             <p className="text-lg">
-              With expertise in modern web technologies like React, Next.js, and Tailwind CSS, I build responsive and
-              accessible websites that deliver exceptional performance.
-            </p>
-            <p className="text-lg">
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or
-              enjoying outdoor activities.
+              Personally, my strongest interest is literature. I think I might be a poet after I retire.
             </p>
           </div>
         </div>

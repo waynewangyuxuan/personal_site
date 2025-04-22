@@ -1,34 +1,34 @@
-import { Code, Figma, Database, Globe, Server, Smartphone } from "lucide-react"
+import { Brain, Code, Database, Server, Cloud, Globe } from "lucide-react"
 
 export const skillCategories = [
   {
-    title: "Frontend",
-    icon: Code,
-    skills: ["HTML/CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
+    title: "AI w/ Agents",
+    icon: Brain,
+    skills: ["PyTorch", "TensorFlow", "FAISS", "MCP", "Transformers", "LangChain"],
   },
   {
-    title: "Backend",
-    icon: Server,
-    skills: ["Node.js", "Express", "REST API", "GraphQL", "Authentication"],
-  },
-  {
-    title: "Database",
-    icon: Database,
-    skills: ["MongoDB", "PostgreSQL", "MySQL", "Prisma", "Supabase"],
-  },
-  {
-    title: "Design",
-    icon: Figma,
-    skills: ["Figma", "Adobe XD", "UI/UX", "Responsive Design", "Wireframing"],
-  },
-  {
-    title: "Other",
+    title: "Web3",
     icon: Globe,
-    skills: ["Git", "GitHub", "CI/CD", "Testing", "Performance Optimization"],
+    skills: ["Hardhat", "Alchemy", "Uniswap", "Solidity", "LayerZero", "Web3.js", "Ethers.js"],
   },
   {
-    title: "Mobile",
-    icon: Smartphone,
-    skills: ["React Native", "Progressive Web Apps", "Mobile-First Design"],
+    title: "Programming Languages",
+    icon: Code,
+    skills: ["C++/C", "Python", "TypeScript", "Swift", "Rust", "Go", "SQL"],
+  },
+  {
+    title: "Software Development",
+    icon: Server,
+    skills: ["Flask", "FastAPI", "GraphQL", "Next.js", "React", "Node.js", "Express"],
+  },
+  {
+    title: "Data Engineering",
+    icon: Database,
+    skills: ["Apache Spark", "Hadoop", "MySQL", "PostgreSQL", "MongoDB", "DynamoDB", "Elasticsearch", "Airflow"],
+  },
+  {
+    title: "DevOps",
+    icon: Cloud,
+    skills: ["AWS CloudFormation", "Secret Manager", "Kubernetes", "Docker", "CircleCI", "GitHub Actions", "Terraform"],
   },
 ]

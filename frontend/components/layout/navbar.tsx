@@ -41,7 +41,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold">
-            YourName
+            Wayne
           </Link>
 
           {/* Desktop Navigation */}
@@ -54,6 +54,9 @@ export default function Navbar() {
             </button>
             <button onClick={() => scrollToSection("skills")} className="text-sm font-medium hover:text-primary">
               Skills
+            </button>
+            <button onClick={() => scrollToSection("experience")} className="text-sm font-medium hover:text-primary">
+              Experience
             </button>
             <button onClick={() => scrollToSection("projects")} className="text-sm font-medium hover:text-primary">
               Projects
@@ -104,6 +107,9 @@ export default function Navbar() {
             </button>
             <button onClick={() => scrollToSection("skills")} className="text-sm font-medium hover:text-primary">
               Skills
+            </button>
+            <button onClick={() => scrollToSection("experience")} className="text-sm font-medium hover:text-primary">
+              Experience
             </button>
             <button onClick={() => scrollToSection("projects")} className="text-sm font-medium hover:text-primary">
               Projects

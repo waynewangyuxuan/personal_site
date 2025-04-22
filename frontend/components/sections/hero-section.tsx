@@ -30,8 +30,8 @@ export default function HeroSection() {
       .fromTo(scrollRef.current, { opacity: 0 }, { opacity: 1, duration: 1 }, "-=0.2")
   }, [gsap, isLoaded])
 
-  const scrollToAbout = () => {
-    const element = document.getElementById("about")
+  const scrollToProjects = () => {
+    const element = document.getElementById("projects")
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
@@ -47,11 +47,11 @@ export default function HeroSection() {
               <CustomFontText text={siteConfig.name} tag="span" className="text-primary" interval={1500} />
             </h1>
             <div ref={subtitleRef} className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-              <CustomFontText text="Web Developer & Designer" tag="span" interval={1500} hoverToChange={true} />
+              <CustomFontText text="Developer & Researcher & Poet" tag="span" interval={1500} hoverToChange={true} />
             </div>
           </div>
           <div ref={buttonsRef} className="space-x-4">
-            <Button onClick={scrollToAbout}>View My Work</Button>
+            <Button onClick={scrollToProjects}>View My Work</Button>
             <Button variant="outline" asChild>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 Resume
@@ -61,7 +61,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div ref={scrollRef} className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-        <Button variant="ghost" size="icon" onClick={scrollToAbout} aria-label="Scroll down">
+        <Button variant="ghost" size="icon" onClick={scrollToProjects} aria-label="Scroll down">
           <ArrowDown className="h-6 w-6" />
         </Button>
       </div>
