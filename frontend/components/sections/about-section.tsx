@@ -14,13 +14,13 @@ export default function AboutSection() {
         />
         <div className="grid gap-8 md:grid-cols-2 items-center">
           <div className="flex justify-center">
-            <div className="relative h-80 w-80 overflow-hidden rounded-full border-4 border-primary transition-all duration-500 ease-in-out transform hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-primary/30 hover:border-primary/80 perspective-1000">
+            <div className="relative h-80 w-80 overflow-visible rounded-full border-4 border-primary transition-all duration-500 ease-in-out transform hover:scale-[1.6] hover:rotate-3 hover:shadow-2xl hover:shadow-primary/30 hover:border-primary/80 perspective-1000 z-10">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <Image
                 src={getImagePath("/headshot.jpg")}
                 alt={siteConfig.name}
                 fill
-                className="object-cover transition-transform duration-500 ease-in-out hover:scale-105"
+                className="object-cover transition-transform duration-500 ease-in-out hover:scale-105 rounded-full"
                 priority
               />
             </div>
