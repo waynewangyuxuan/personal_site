@@ -1,5 +1,7 @@
 export const siteConfig = {
-  name: "Yuxuan (Wayne) Wang",
+  name: "Wayne Wang",
+  name_cn: "王宇轩",
+  name_en: "Wayne",
   title: "Portfolio | Wayne",
   description: "Personal portfolio website showcasing my skills and projects",
   url: "https://waynewangyuxuan.github.io/personal_site/",

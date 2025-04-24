@@ -44,7 +44,8 @@ export default function HeroSection() {
           <div className="space-y-2">
             <h1 ref={titleRef} className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
               <CustomFontText text="Hi, I'm" tag="span" interval={1500} />{" "}
-              <CustomFontText text={siteConfig.name} tag="span" className="text-primary" interval={1500} />
+              <CustomFontText text={siteConfig.name_en} tag="span" className="text-primary" interval={1500} />
+              <CustomFontText text={siteConfig.name_cn} tag="span" className="text-primary" interval={1500} />
             </h1>
             <div ref={subtitleRef} className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
               <CustomFontText text="Developer & Researcher & Poet" tag="span" interval={1500} hoverToChange={true} />

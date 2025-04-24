@@ -18,7 +18,7 @@ export default function AboutSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <Image
                 src={getImagePath("/headshot.jpg")}
-                alt={siteConfig.name}
+                alt={siteConfig.name_en}
                 fill
                 className="object-cover transition-transform duration-500 ease-in-out hover:scale-105 rounded-full"
                 priority
@@ -27,7 +27,7 @@ export default function AboutSection() {
           </div>
           <div className="space-y-4">
             <p className="text-lg">
-              Hello! I'm {siteConfig.name}. I am a full-stack developer. My specific skillset is shown down below, so I am not going to repeat them here, but I want to share two things that I value the most as a developer:
+              Hello! I'm {siteConfig.name_en}. I am a full-stack developer. My specific skillset is shown down below, so I am not going to repeat them here, but I want to share two things that I value the most as a developer:
               <ul>
                 <li>
                   <strong>A Product Mindset</strong>: understand, knows, and believes in what they are building.
