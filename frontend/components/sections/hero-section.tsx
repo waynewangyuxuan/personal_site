@@ -54,7 +54,7 @@ export default function HeroSection() {
           <div ref={buttonsRef} className="space-x-4">
             <Button onClick={scrollToProjects}>View My Work</Button>
             <Button variant="outline" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href={`${siteConfig.url}resume.pdf`} target="_blank" rel="noopener noreferrer">
                 Resume
               </a>
             </Button>

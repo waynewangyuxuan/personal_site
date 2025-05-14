@@ -20,9 +20,6 @@ const nextConfig = {
   trailingSlash: true,
   assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
   distDir: 'out',
-  images: {
-    unoptimized: true,
-  },
 }
 
 export default nextConfig
