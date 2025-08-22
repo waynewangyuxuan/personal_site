@@ -11,7 +11,7 @@
         "degree": "Bachelor of Science/Master of Science in Computer Science, Math"
     },
     "technical_skills": [
-        "Python", "C++/C", "Linux", "GitHub",
+        "Python", "Java","C++/C", "Linux", "GitHub",
         "Search Engine Optimization", "Machine Learning",
         "DevOps (Docker, Circle-CI, Clang)",
         "Database Management (MySQL, NoSQL)",
@@ -21,7 +21,7 @@
     ],
     "experiences": [
         {
-            "duration": "June 2024 - Present",
+            "duration": "June 2024 - May 2024",
             "title": "Researcher - Graph-Based Vocabulary Mismatch Solution",
             "organization": "New York University, Tandon School of Engineering",
             "responsibilities": [
