@@ -13,8 +13,8 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/waynewangyuxuan/",
   },
   contact: {
-    email: "yw5954@nyu.edu",
+    email: "waw009@ucsd.edu",
     phone: "+1 929-583-8556",
-    location: "Bayonne, NJ, USA",
+    location: "University of California, San Diego",
   },
 }
