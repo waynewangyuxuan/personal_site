@@ -9,7 +9,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/waynewangyuxuan",
     twitter: "https://x.com/waynewa53914641",
-    linkedin: "https://www.linkedin.com/in/yuxuan-wang-364174231/",
+    linkedin: "https://www.linkedin.com/in/waynewangyuxuan/",
     instagram: "https://www.instagram.com/waynewangyuxuan/",
   },
   contact: {
