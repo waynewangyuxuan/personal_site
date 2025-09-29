@@ -31,7 +31,7 @@ const experiences: Experience[] = [
   {
     company: "New York University",
     role: "Research Assistant",
-    period: "June 2024 - Present",
+    period: "June 2024 - May 2025",
     location: "New York, NY",
     institution: "Tandon School of Engineering",
     supervisor: "Professor Torsten Suel",
