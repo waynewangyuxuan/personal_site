@@ -4,7 +4,7 @@ export const skillCategories = [
   {
     title: "AI w/ Agents",
     icon: Brain,
-    skills: ["PyTorch", "TensorFlow", "FAISS", "MCP", "Transformers", "LangChain"],
+    skills: ["n8n", "Dify", "FAISS", "MCP", "LangChain", "PyTorch"],
   },
   {
     title: "Web3",
@@ -29,6 +29,6 @@ export const skillCategories = [
   {
     title: "DevOps",
     icon: Cloud,
-    skills: ["AWS CloudFormation", "Secret Manager", "Kubernetes", "Docker", "CircleCI", "GitHub Actions", "Terraform"],
+    skills: ["AWS CloudFormation", "Kubernetes", "Docker", "CircleCI", "GitHub Actions", "Terraform"],
   },
 ]
