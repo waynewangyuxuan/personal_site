@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/waynewang/personal_site status)",
+      "Bash(git -C /Users/waynewang/personal_site diff)",
+      "Bash(git -C /Users/waynewang/personal_site log --oneline -5)"
+    ]
+  }
+}
