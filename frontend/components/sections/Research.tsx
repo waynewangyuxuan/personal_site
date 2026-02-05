@@ -1,86 +1,128 @@
 "use client";
 
-import { research } from "@/lib/content";
-import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
+import { useI18n } from "@/lib/i18n";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TaylorExpansion } from "@/components/ui/TaylorExpansion";
+
+// Publications data
+const publications = [
+  {
+    id: "01",
+    title: "Temporal Leakage in Search-Engine Date-Filtered Web Retrieval",
+    venue: "ACL 2026",
+    authors: "4th author",
+    stat: "71% of date-filtered queries return post-cutoff data",
+    link: null,
+  },
+  {
+    id: "02",
+    title: "Simulated Ignorance Fails",
+    venue: "arXiv",
+    authors: "2nd author",
+    stat: "52% performance gap when simulating ignorance",
+    link: "https://arxiv.org/abs/2601.13717",
+  },
+];
+
+const currentWork = {
+  title: "Systemic World Models",
+  description: {
+    en: "Structured forecasting with Threads, Timelines, Causes",
+    zh: "结构化预测：线程、时间线、因果",
+  },
+  status: {
+    en: "In Progress",
+    zh: "进行中",
+  },
+};
 
 export function Research() {
+  const { t, lang } = useI18n();
+
   return (
     <section id="research" className="section page-container">
-      {/* Section label */}
-      <ScrollReveal>
-        <p className="section-label mb-12">Research</p>
-      </ScrollReveal>
-
-      <div className="max-w-4xl">
-        {/* The Question */}
-        <ScrollReveal className="mb-20">
-          <p className="text-[var(--muted)] text-sm uppercase tracking-wider mb-4">
-            The Question
-          </p>
-          <h2 className="text-2xl md:text-3xl leading-tight">
-            {research.question}
-          </h2>
+      <div className="max-w-3xl mx-auto">
+        {/* Section label */}
+        <ScrollReveal>
+          <p className="section-label mb-12">{t("research.title")}</p>
         </ScrollReveal>
 
-        {/* Two columns: Critique and Construction */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
-          {/* Critique */}
-          <ScrollReveal direction="left">
-            <p className="text-[var(--muted)] text-sm uppercase tracking-wider mb-6">
-              The Critique
-            </p>
-            <StaggerContainer className="space-y-8">
-              {research.critique.papers.map((paper) => (
-                <StaggerItem key={paper.id}>
-                  <div className="flex gap-4">
-                    <span className="mono text-2xl font-bold text-[var(--muted)]">
-                      {paper.id}
-                    </span>
-                    <div>
-                      <h3 className="text-lg mb-1">{paper.title}</h3>
-                      <p className="text-sm text-[var(--muted)] mb-1">
-                        {paper.stat}
-                      </p>
-                      <p className="mono text-xs text-[var(--muted)]">
-                        {paper.venue} · {paper.position}
-                      </p>
-                    </div>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </ScrollReveal>
+        {/* Research Statement */}
+        <ScrollReveal>
+          <div
+            className="text-lg leading-relaxed text-[var(--foreground)] mb-16 space-y-4"
+            style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+          >
+            {t("research.statement").split("\n\n").map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </ScrollReveal>
 
-          {/* Construction */}
-          <ScrollReveal direction="right" delay={0.2}>
-            <p className="text-[var(--muted)] text-sm uppercase tracking-wider mb-6">
-              The Construction
-            </p>
-            <div className="flex gap-4">
-              <span className="mono text-2xl font-bold text-[var(--muted)]">
-                {research.construction.project.id}
-              </span>
-              <div>
-                <h3 className="text-lg mb-1">
-                  {research.construction.project.title}
-                </h3>
-                <p className="text-sm text-[var(--muted)] mb-1">
-                  {research.construction.project.description}
-                </p>
-                <p className="mono text-xs text-[var(--muted)]">
-                  {research.construction.project.role} · {research.construction.project.status}
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
+        {/* Taylor Expansion Animation */}
+        <ScrollReveal>
+          <TaylorExpansion />
+        </ScrollReveal>
+
+        {/* Divider */}
+        <div className="divider-signature my-16">
+          <span>·</span>
         </div>
 
-        {/* The Insight */}
+        {/* Publications */}
         <ScrollReveal>
-          <div className="divider mb-12" />
-          <p className="text-2xl md:text-3xl leading-tight">
-            "{research.insight}"
-          </p>
+          <p className="section-label mb-8">{t("research.publications")}</p>
+
+          <div className="space-y-8">
+            {publications.map((paper) => (
+              <article key={paper.id} className="flex gap-6">
+                <span className="mono text-2xl font-bold text-[var(--gray-300)] shrink-0">
+                  {paper.id}
+                </span>
+                <div>
+                  <h3 className="text-base font-medium mb-1">
+                    {paper.link ? (
+                      <a
+                        href={paper.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-underline"
+                      >
+                        {paper.title}
+                      </a>
+                    ) : (
+                      paper.title
+                    )}
+                  </h3>
+                  <p className="text-sm text-[var(--muted)] mb-1">
+                    {paper.stat}
+                  </p>
+                  <p className="mono text-xs text-[var(--gray-400)]">
+                    {paper.venue} · {paper.authors}
+                  </p>
+                </div>
+              </article>
+            ))}
+
+            {/* Current Work */}
+            <article className="flex gap-6">
+              <span className="mono text-2xl font-bold text-[var(--gray-300)] shrink-0">
+                03
+              </span>
+              <div>
+                <h3 className="text-base font-medium mb-1">{currentWork.title}</h3>
+                <p
+                  className="text-sm text-[var(--muted)] mb-1"
+                  style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+                >
+                  {currentWork.description[lang]}
+                </p>
+                <p className="mono text-xs text-[var(--gray-400)]">
+                  UCSD · {currentWork.status[lang]}
+                </p>
+              </div>
+            </article>
+          </div>
         </ScrollReveal>
       </div>
     </section>
