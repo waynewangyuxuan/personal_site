@@ -1,47 +1,71 @@
 "use client";
 
-import { personal, experience, education } from "@/lib/content";
+import { useI18n } from "@/lib/i18n";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 
+const experience = [
+  {
+    company: "ByteDance",
+    role: { en: "Software Engineer Intern", zh: "软件工程师实习" },
+    period: "Jun – Sep 2025",
+  },
+  {
+    company: "NYU Research",
+    role: { en: "Research Assistant", zh: "研究助理" },
+    period: "Jun 2024 – May 2025",
+  },
+  {
+    company: "CITIC Poly Fund",
+    role: { en: "Data Intern", zh: "数据实习" },
+    period: "Jun – Aug 2023",
+  },
+];
+
+const education = [
+  {
+    school: "UC San Diego",
+    degree: { en: "MS Computer Science", zh: "计算机科学硕士" },
+    period: "2025 – 2027",
+    current: true,
+  },
+  {
+    school: "NYU Tandon",
+    degree: { en: "BS Computer Science, Math Minor", zh: "计算机科学学士，数学辅修" },
+    period: "2021 – 2025",
+    current: false,
+  },
+];
+
 export function About() {
+  const { t, lang } = useI18n();
+
   return (
     <section id="about" className="section page-container">
-      {/* Section label */}
-      <ScrollReveal>
-        <p className="section-label mb-12">About</p>
-      </ScrollReveal>
-
-      <div className="max-w-4xl">
-        {/* Bio */}
-        <ScrollReveal className="mb-20">
-          <p className="text-xl md:text-2xl leading-relaxed mb-6">
-            I build tools that help humans work effectively alongside AI.
-          </p>
-          <p className="text-[var(--muted)] leading-relaxed">
-            Currently pursuing my MS in Computer Science at UC San Diego.
-            My research focuses on AI evaluation methodology—not just building systems,
-            but rigorously testing whether they actually work.
-          </p>
+      <div className="max-w-3xl mx-auto">
+        {/* Section label */}
+        <ScrollReveal>
+          <p className="section-label mb-12">{t("about.title")}</p>
         </ScrollReveal>
 
         {/* Experience */}
         <ScrollReveal className="mb-16">
-          <p className="text-[var(--muted)] text-sm uppercase tracking-wider mb-8">
-            Experience
-          </p>
-          <StaggerContainer className="space-y-8">
+          <p className="chapter-label mb-6">{t("about.previously")}</p>
+          <StaggerContainer className="space-y-6">
             {experience.map((exp) => (
               <StaggerItem key={exp.company}>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-8">
-                  <p className="mono text-sm text-[var(--muted)]">
-                    {exp.period}
-                  </p>
-                  <div className="md:col-span-3">
-                    <h3 className="text-lg">{exp.company}</h3>
-                    <p className="text-[var(--muted)] text-sm">
-                      {exp.role}
+                <div className="flex justify-between items-baseline">
+                  <div>
+                    <h3 className="text-base font-medium">{exp.company}</h3>
+                    <p
+                      className="text-sm text-[var(--muted)]"
+                      style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+                    >
+                      {exp.role[lang]}
                     </p>
                   </div>
+                  <p className="mono text-xs text-[var(--gray-400)] shrink-0">
+                    {exp.period}
+                  </p>
                 </div>
               </StaggerItem>
             ))}
@@ -50,29 +74,30 @@ export function About() {
 
         {/* Education */}
         <ScrollReveal>
-          <p className="text-[var(--muted)] text-sm uppercase tracking-wider mb-8">
-            Education
-          </p>
-          <StaggerContainer className="space-y-4">
+          <p className="chapter-label mb-6">{t("about.education")}</p>
+          <StaggerContainer className="space-y-6">
             {education.map((edu) => (
               <StaggerItem key={edu.school}>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-8">
-                  <p className="mono text-sm text-[var(--muted)]">
-                    {edu.period}
-                  </p>
-                  <div className="md:col-span-3">
-                    <h3 className="text-lg">
+                <div className="flex justify-between items-baseline">
+                  <div>
+                    <h3 className="text-base font-medium">
                       {edu.school}
                       {edu.current && (
-                        <span className="text-[var(--muted)] text-sm ml-2">
-                          (current)
+                        <span className="text-[var(--gray-400)] text-sm ml-2">
+                          ←
                         </span>
                       )}
                     </h3>
-                    <p className="text-[var(--muted)] text-sm">
-                      {edu.degree}
+                    <p
+                      className="text-sm text-[var(--muted)]"
+                      style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+                    >
+                      {edu.degree[lang]}
                     </p>
                   </div>
+                  <p className="mono text-xs text-[var(--gray-400)] shrink-0">
+                    {edu.period}
+                  </p>
                 </div>
               </StaggerItem>
             ))}
