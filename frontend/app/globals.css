@@ -3,31 +3,80 @@
 @tailwind utilities;
 
 /* ============================================
-   FONTS (via Google Fonts)
+   FONTS
+   - Syne: Display/Headlines
+   - Inter: Body text (English)
+   - Crimson Pro: Signature/Quotes (serif)
+   - JetBrains Mono: Code
+   - Noto Serif SC: Chinese display
+   - Noto Sans SC: Chinese body
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500&display=swap');
 
 /* ============================================
-   CSS VARIABLES
+   CSS VARIABLES - Paper & Ink Theme
    ============================================ */
 :root {
-  --background: #FAFAFA;
-  --foreground: #1A1A1A;
-  --muted: #6B6B6B;
-  --border: #E5E5E5;
+  /* Paper & Ink - Warm tones */
+  --paper: #fafaf9;
+  --ink: #1c1917;
 
-  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  /* Warm grays */
+  --gray-50: #fafaf9;
+  --gray-100: #f5f5f4;
+  --gray-200: #e7e5e4;
+  --gray-300: #d6d3d1;
+  --gray-400: #a8a29e;
+  --gray-500: #78716c;
+  --gray-600: #57534e;
+  --gray-700: #44403c;
+  --gray-800: #292524;
+  --gray-900: #1c1917;
+
+  /* Semantic */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: var(--gray-500);
+  --border: var(--gray-200);
+  --accent: var(--gray-600);
+
+  /* Fonts */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Crimson Pro', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-cn-display: 'Noto Serif SC', serif;
+  --font-cn-body: 'Noto Sans SC', sans-serif;
 
-  --page-margin: max(24px, 15vw);
-  --section-gap: 120px;
-  --content-max-width: 800px;
+  /* Layout */
+  --page-margin: max(24px, 10vw);
+  --section-gap: 140px;
+  --content-max-width: 860px;
+
+  /* Animation */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-normal: 0.4s;
+  --duration-slow: 0.7s;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1c1917;
+    --ink: #e7e5e4;
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --muted: var(--gray-400);
+    --border: var(--gray-700);
+    --accent: var(--gray-400);
+  }
 }
 
 @media (max-width: 768px) {
   :root {
-    --page-margin: 24px;
-    --section-gap: 80px;
+    --page-margin: 20px;
+    --section-gap: 100px;
   }
 }
 
@@ -45,25 +94,87 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-weight: 400;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Chinese text */
+:lang(zh) {
+  font-family: var(--font-cn-body);
+}
+
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3,
+:lang(zh) h4 {
+  font-family: var(--font-cn-display);
 }
 
 /* ============================================
    TYPOGRAPHY
    ============================================ */
 h1, h2, h3, h4 {
-  font-weight: 500;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
   letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+}
+
+/* Signature style */
+.signature {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+/* Section label */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Chapter label */
+.chapter-label {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Quote/question style */
+.question {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--muted);
 }
 
 .mono {
   font-family: var(--font-mono);
-  font-size: 0.9em;
+  font-size: 0.875em;
 }
 
 /* ============================================
@@ -84,6 +195,37 @@ h1, h2, h3, h4 {
 }
 
 /* ============================================
+   SIGNATURE DIVIDER ——·——
+   ============================================ */
+.divider-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gray-300);
+  margin: 3rem 0;
+}
+
+.divider-signature::before,
+.divider-signature::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gray-300);
+}
+
+.divider-signature span {
+  font-size: 0.5rem;
+}
+
+/* Simple divider */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+/* ============================================
    LINK STYLES
    ============================================ */
 .link-underline {
@@ -96,39 +238,53 @@ h1, h2, h3, h4 {
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 1px;
   background-color: var(--foreground);
-  transition: width 0.2s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-normal) var(--ease-out-expo);
 }
 
 .link-underline:hover::after {
-  width: 100%;
+  transform: scaleX(1);
+}
+
+/* Arrow link */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--muted);
+  transition: color var(--duration-normal) var(--ease-out-expo);
+}
+
+.link-arrow:hover {
+  color: var(--foreground);
+}
+
+.link-arrow svg {
+  transition: transform var(--duration-normal) var(--ease-out-expo);
+}
+
+.link-arrow:hover svg {
+  transform: translateX(4px);
 }
 
 /* ============================================
-   ANIMATIONS
+   CARD STYLES
    ============================================ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card {
+  padding: 2rem;
+  border: 1px solid var(--border);
+  transition: all var(--duration-normal) var(--ease-out-expo);
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+.card:hover {
+  border-color: var(--foreground);
 }
-
-.animate-delay-1 { animation-delay: 0.05s; }
-.animate-delay-2 { animation-delay: 0.1s; }
-.animate-delay-3 { animation-delay: 0.15s; }
-.animate-delay-4 { animation-delay: 0.2s; }
-.animate-delay-5 { animation-delay: 0.25s; }
 
 /* ============================================
    SELECTION
@@ -136,4 +292,56 @@ h1, h2, h3, h4 {
 ::selection {
   background-color: var(--foreground);
   color: var(--background);
+}
+
+/* ============================================
+   SCROLLBAR (subtle)
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* ============================================
+   ANIMATION UTILITIES
+   ============================================ */
+.fade-in {
+  animation: fadeIn var(--duration-slow) var(--ease-out-expo);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Breathing animation for signature */
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }

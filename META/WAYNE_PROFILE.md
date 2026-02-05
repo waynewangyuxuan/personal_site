@@ -8,7 +8,7 @@
 
 | Attribute | Value |
 |-----------|-------|
-| **Full Name** | Yuxuan Wang (王玉轩) |
+| **Full Name** | Yuxuan Wang (王宇轩) |
 | **Professional Name** | Wayne Wang |
 | **Current** | MS Computer Science @ UCSD |
 | **Previous** | BS Computer Science + Math Minor @ NYU Tandon |
@@ -202,18 +202,40 @@ MS at UCSD, working on the **constructive** side of his research—building fore
 
 ## Personal Notes
 
+**Signature**:
+> *Living between grief and nothing*
+
 **Working Style**:
 - Deep work periods, not constant availability
 - Write specs before code
 - Question metrics before optimizing them
 
+**AI Era Philosophy**:
+- 创造力为王 — Creativity is king
+- Pure technical skills are necessary but not sufficient
+- High-level abstract thinking + artistic/literary sensibility = real moat
+- Values systems that augment human creativity, not replace it
+
 **Interests Outside Tech**:
-- *(To be populated)*
+
+| 领域 | 喜好 |
+|------|------|
+| **Classical Music** | Bach, Tchaikovsky (柴可夫斯基) |
+| **Chinese Modern Poetry** | 欧阳江河, 北岛, 海子, 顾城 |
+| **American Contemporary Fiction** | Philip Roth, Paul Auster (*4 3 2 1*) |
+| **Latin American Literature** | Roberto Bolaño (波拉尼奥) |
+| **Sports** | Basketball |
+
+**Aesthetic Influences**:
+- Bach's counterpoint — restraint, structure, mathematical beauty
+- Chinese modern poetry — fragmented imagery, existential weight
+- Bolaño — sprawling narratives, obsessive detail, literary ambition
 
 **Communication Preference**:
 - Direct, data-driven
 - Appreciates well-structured arguments
 - Values intellectual honesty over diplomacy
+- Poetic precision over verbose explanation
 
 ---
 

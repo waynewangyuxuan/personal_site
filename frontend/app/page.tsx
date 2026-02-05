@@ -1,12 +1,13 @@
-import { Hero, ProjectsPreview, ResearchTeaser, Currently } from "@/components/landing";
+import { Hero, Projects, Research, About, Contact } from "@/components/sections";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ProjectsPreview />
-      <ResearchTeaser />
-      <Currently />
+      <Projects />
+      <Research />
+      <About />
+      <Contact />
     </>
   );
 }
