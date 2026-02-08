@@ -5,7 +5,6 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { ProjectCard, SignatureDivider } from "@/components/ui/AnimatedCard";
 
 // Project data with bilingual content
-// Add previewImage path when you have screenshots (e.g., "/previews/graphex.png")
 const projectsData = [
   {
     slug: "graphex",
@@ -20,7 +19,7 @@ const projectsData = [
     },
     tech: ["React", "Canvas API", "Claude API"],
     url: "https://graphex.app",
-    previewImage: undefined, // Add: "/previews/graphex.png"
+    previewImage: "/previews/graphex.png",
   },
   {
     slug: "notate",
@@ -35,7 +34,7 @@ const projectsData = [
     },
     tech: ["React", "TypeScript", "Vector DB"],
     url: "https://vw-ai.github.io/Notate.ai/",
-    previewImage: undefined, // Add: "/previews/notate.png"
+    previewImage: "/previews/notate.png",
   },
   {
     slug: "vibehub",
@@ -50,7 +49,7 @@ const projectsData = [
     },
     tech: ["Next.js", "Real-time sync"],
     url: "https://vibehub.icu/",
-    previewImage: undefined, // Add: "/previews/vibehub.png"
+    previewImage: "/previews/vibehub.png",
   },
 ];
 

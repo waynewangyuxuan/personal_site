@@ -214,12 +214,7 @@ interface BrowserPreviewProps {
 }
 
 export function BrowserPreview({ url, previewImage, isHovered = false }: BrowserPreviewProps) {
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
   const domain = new URL(url).hostname.replace('www.', '');
-
-  // Use screenshot API as fallback when no previewImage provided
-  const screenshotUrl = previewImage || `https://image.thum.io/get/width/680/crop/425/noanimate/${url}`;
 
   return (
     <motion.a
@@ -259,30 +254,21 @@ export function BrowserPreview({ url, previewImage, isHovered = false }: Browser
 
         {/* Preview area */}
         <div className="relative aspect-[16/10] bg-[var(--gray-100)] overflow-hidden">
-          {/* Loading skeleton */}
-          {!imageLoaded && !imageError && (
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--gray-100)] to-[var(--gray-200)] animate-pulse">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 border-2 border-[var(--gray-300)] border-t-[var(--gray-500)] rounded-full animate-spin" />
-              </div>
-            </div>
-          )}
-
-          {/* Screenshot image */}
-          {!imageError && (
-            <motion.img
-              src={screenshotUrl}
-              alt={`${domain} preview`}
-              className={`w-full h-full object-cover object-top transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          {/* Screenshot image - using standard img for reliability */}
+          {previewImage ? (
+            <motion.div
+              className="w-full h-full"
               animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ duration: durations.slow }}
-              onLoad={() => setImageLoaded(true)}
-              onError={() => setImageError(true)}
-            />
-          )}
-
-          {/* Fallback if image fails */}
-          {imageError && (
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={previewImage}
+                alt={`${domain} preview`}
+                className="w-full h-full object-cover object-top"
+              />
+            </motion.div>
+          ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--gray-100)] to-[var(--gray-200)]">
               <div className="text-center">
                 <motion.div
