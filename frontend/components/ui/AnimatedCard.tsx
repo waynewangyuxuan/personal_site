@@ -214,7 +214,12 @@ interface BrowserPreviewProps {
 }
 
 export function BrowserPreview({ url, previewImage, isHovered = false }: BrowserPreviewProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const domain = new URL(url).hostname.replace('www.', '');
+
+  // Use screenshot API as fallback when no previewImage provided
+  const screenshotUrl = previewImage || `https://image.thum.io/get/width/680/crop/425/noanimate/${url}`;
 
   return (
     <motion.a
@@ -224,8 +229,8 @@ export function BrowserPreview({ url, previewImage, isHovered = false }: Browser
       className="block relative group/browser"
       animate={{
         y: isHovered ? -8 : 0,
-        rotateY: isHovered ? -5 : 0,
-        rotateX: isHovered ? 5 : 0,
+        rotateY: isHovered ? -3 : 0,
+        rotateX: isHovered ? 3 : 0,
       }}
       transition={{ duration: durations.normal, ease: easings.smooth }}
       style={{ perspective: 1000 }}
@@ -233,68 +238,82 @@ export function BrowserPreview({ url, previewImage, isHovered = false }: Browser
       {/* Browser frame */}
       <div className="relative bg-[var(--gray-100)] rounded-xl overflow-hidden shadow-lg group-hover/browser:shadow-2xl transition-shadow duration-300">
         {/* Title bar */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-[var(--gray-200)] border-b border-[var(--gray-300)]">
+        <div className="flex items-center gap-2 px-3 py-2.5 bg-[var(--gray-200)] border-b border-[var(--gray-300)]">
           {/* Traffic lights */}
           <div className="flex gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-            <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-            <span className="w-3 h-3 rounded-full bg-[#28c840]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+            <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
           </div>
           {/* URL bar */}
-          <div className="flex-1 mx-4">
-            <div className="bg-[var(--background)] rounded-md px-3 py-1.5 text-xs text-[var(--muted)] mono flex items-center gap-2">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50">
+          <div className="flex-1 mx-3">
+            <div className="bg-[var(--background)] rounded-md px-3 py-1 text-xs text-[var(--muted)] mono flex items-center gap-2">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-50">
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
-              {domain}
+              <span className="truncate">{domain}</span>
             </div>
           </div>
         </div>
 
         {/* Preview area */}
-        <div className="relative aspect-[16/10] bg-[var(--background)] overflow-hidden">
-          {previewImage ? (
+        <div className="relative aspect-[16/10] bg-[var(--gray-100)] overflow-hidden">
+          {/* Loading skeleton */}
+          {!imageLoaded && !imageError && (
+            <div className="absolute inset-0 bg-gradient-to-br from-[var(--gray-100)] to-[var(--gray-200)] animate-pulse">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-8 h-8 border-2 border-[var(--gray-300)] border-t-[var(--gray-500)] rounded-full animate-spin" />
+              </div>
+            </div>
+          )}
+
+          {/* Screenshot image */}
+          {!imageError && (
             <motion.img
-              src={previewImage}
+              src={screenshotUrl}
               alt={`${domain} preview`}
-              className="w-full h-full object-cover object-top"
+              className={`w-full h-full object-cover object-top transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
               animate={{ scale: isHovered ? 1.05 : 1 }}
               transition={{ duration: durations.slow }}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
             />
-          ) : (
-            /* Placeholder with live iframe preview attempt */
+          )}
+
+          {/* Fallback if image fails */}
+          {imageError && (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--gray-100)] to-[var(--gray-200)]">
               <div className="text-center">
                 <motion.div
-                  className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[var(--gray-300)] flex items-center justify-center"
+                  className="w-12 h-12 mx-auto mb-3 rounded-xl bg-[var(--gray-300)] flex items-center justify-center"
                   animate={{ scale: isHovered ? 1.1 : 1 }}
                   transition={{ duration: durations.fast }}
                 >
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="1.5">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="1.5">
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                   </svg>
                 </motion.div>
-                <p className="text-sm text-[var(--muted)] mono">{domain}</p>
+                <p className="text-xs text-[var(--muted)] mono">{domain}</p>
               </div>
             </div>
           )}
 
           {/* Hover overlay with "Visit" prompt */}
           <motion.div
-            className="absolute inset-0 bg-[var(--foreground)] flex items-center justify-center"
+            className="absolute inset-0 bg-[var(--foreground)] flex items-center justify-center pointer-events-none"
             initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 0.9 : 0 }}
+            animate={{ opacity: isHovered ? 0.85 : 0 }}
             transition={{ duration: durations.fast }}
           >
             <motion.div
-              className="text-[var(--background)] flex items-center gap-3"
-              animate={{ y: isHovered ? 0 : 10 }}
+              className="text-[var(--background)] flex items-center gap-2"
+              animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0 }}
               transition={{ duration: durations.fast, delay: 0.05 }}
             >
-              <span className="text-lg font-medium">Visit Site</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <span className="text-sm font-medium">Visit Site</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                 <polyline points="15 3 21 3 21 9"/>
                 <line x1="10" y1="14" x2="21" y2="3"/>
@@ -304,10 +323,10 @@ export function BrowserPreview({ url, previewImage, isHovered = false }: Browser
         </div>
       </div>
 
-      {/* Reflection/shadow effect */}
+      {/* Subtle reflection */}
       <motion.div
-        className="absolute -bottom-4 left-4 right-4 h-8 bg-gradient-to-b from-[var(--gray-200)] to-transparent opacity-30 blur-sm rounded-full"
-        animate={{ opacity: isHovered ? 0.5 : 0.3, scaleX: isHovered ? 1.05 : 1 }}
+        className="absolute -bottom-3 left-6 right-6 h-6 bg-gradient-to-b from-[var(--gray-300)] to-transparent opacity-20 blur-md rounded-full"
+        animate={{ opacity: isHovered ? 0.4 : 0.2, scaleX: isHovered ? 1.02 : 1 }}
         transition={{ duration: durations.normal }}
       />
     </motion.a>
