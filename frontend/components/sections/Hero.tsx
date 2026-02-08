@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
+import { TimelineItem } from "@/components/ui/AnimatedCard";
 
 const info = {
   currently: {
@@ -45,87 +45,8 @@ const info = {
   },
 };
 
-// Timeline item component
-function TimelineItem({
-  item,
-  index,
-  isExpanded,
-  onToggle,
-  lang,
-}: {
-  item: (typeof info.timeline)[0];
-  index: number;
-  isExpanded: boolean;
-  onToggle: () => void;
-  lang: "en" | "zh";
-}) {
-  return (
-    <motion.div
-      className="relative pl-6 cursor-pointer group"
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-      onClick={onToggle}
-    >
-      {/* Timeline dot */}
-      <motion.div
-        className="absolute left-0 top-[6px] w-2 h-2 rounded-full bg-[var(--gray-300)] group-hover:bg-[var(--foreground)] transition-colors"
-        animate={{ scale: isExpanded ? 1.25 : 1 }}
-      />
-
-      {/* Timeline line */}
-      {index < info.timeline.length - 1 && (
-        <div className="absolute left-[3px] top-4 w-[2px] h-[calc(100%+8px)] bg-[var(--gray-200)]" />
-      )}
-
-      {/* Content */}
-      <div className="pb-4">
-        <div className="flex items-baseline justify-between gap-4">
-          <p
-            className="text-base font-medium group-hover:text-[var(--foreground)] transition-colors"
-            style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-          >
-            {item.company[lang]}
-          </p>
-          <p className="mono text-xs text-[var(--gray-400)] shrink-0">
-            {item.period}
-          </p>
-        </div>
-
-        <p
-          className="text-sm text-[var(--muted)]"
-          style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-        >
-          {item.role[lang]}
-        </p>
-
-        {/* Expandable description */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.p
-              className="text-sm text-[var(--foreground)] mt-2 leading-relaxed"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-            >
-              {item.description[lang]}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
-    </motion.div>
-  );
-}
-
 export function Hero() {
   const { t, lang } = useI18n();
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
-  const handleToggle = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
 
   return (
     <section className="min-h-screen flex flex-col justify-center page-container relative">
@@ -205,11 +126,12 @@ export function Hero() {
               {info.timeline.map((item, index) => (
                 <TimelineItem
                   key={item.company.en}
-                  item={item}
+                  period={item.period}
+                  title={item.company[lang]}
+                  subtitle={item.role[lang]}
+                  description={item.description[lang]}
                   index={index}
-                  isExpanded={expandedIndex === index}
-                  onToggle={() => handleToggle(index)}
-                  lang={lang}
+                  isLast={index === info.timeline.length - 1}
                 />
               ))}
             </div>

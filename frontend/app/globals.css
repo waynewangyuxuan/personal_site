@@ -70,6 +70,7 @@
     --muted: var(--gray-400);
     --border: var(--gray-700);
     --accent: var(--gray-400);
+    --gray-50: #292524;
   }
 }
 

@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { ProjectCard, SignatureDivider } from "@/components/ui/AnimatedCard";
 
 // Project data with bilingual content
+// Add previewImage path when you have screenshots (e.g., "/previews/graphex.png")
 const projectsData = [
   {
     slug: "graphex",
@@ -19,6 +20,7 @@ const projectsData = [
     },
     tech: ["React", "Canvas API", "Claude API"],
     url: "https://graphex.app",
+    previewImage: undefined, // Add: "/previews/graphex.png"
   },
   {
     slug: "notate",
@@ -33,6 +35,7 @@ const projectsData = [
     },
     tech: ["React", "TypeScript", "Vector DB"],
     url: "https://vw-ai.github.io/Notate.ai/",
+    previewImage: undefined, // Add: "/previews/notate.png"
   },
   {
     slug: "vibehub",
@@ -47,79 +50,12 @@ const projectsData = [
     },
     tech: ["Next.js", "Real-time sync"],
     url: "https://vibehub.icu/",
+    previewImage: undefined, // Add: "/previews/vibehub.png"
   },
 ];
 
-function ChapterDivider() {
-  return (
-    <div className="divider-signature my-16">
-      <span>·</span>
-    </div>
-  );
-}
-
-interface ProjectChapterProps {
-  project: (typeof projectsData)[0];
-  index: number;
-}
-
-function ProjectChapter({ project, index }: ProjectChapterProps) {
-  const { lang } = useI18n();
-  const chapterNum = String(index + 1).padStart(2, "0");
-
-  return (
-    <ScrollReveal>
-      <article className="max-w-2xl">
-        {/* Chapter label */}
-        <p className="chapter-label mb-4">Chapter {chapterNum}</p>
-
-        {/* Project name */}
-        <h3 className="text-2xl md:text-3xl font-bold mb-4">{project.name}</h3>
-
-        {/* Question */}
-        <p className="question mb-6">
-          &ldquo;{project.question[lang]}&rdquo;
-        </p>
-
-        {/* Description */}
-        <p
-          className="text-[var(--foreground)] mb-4 leading-relaxed"
-          style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-        >
-          {project.description[lang]}
-        </p>
-
-        {/* Tech stack */}
-        <p className="mono text-sm text-[var(--muted)] mb-6">
-          {project.tech.join(" · ")}
-        </p>
-
-        {/* Link */}
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="link-arrow"
-        >
-          <span>View Project</span>
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M3 8h10M9 4l4 4-4 4" />
-          </svg>
-        </a>
-      </article>
-    </ScrollReveal>
-  );
-}
-
 export function Projects() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
 
   return (
     <section id="work" className="section page-container">
@@ -128,12 +64,23 @@ export function Projects() {
         <p className="section-label mb-16">{t("projects.title")}</p>
       </ScrollReveal>
 
-      {/* Projects as chapters */}
-      <div className="space-y-0">
+      {/* Projects as chapters with animated cards */}
+      <div className="space-y-24">
         {projectsData.map((project, index) => (
           <div key={project.slug}>
-            <ProjectChapter project={project} index={index} />
-            {index < projectsData.length - 1 && <ChapterDivider />}
+            <ProjectCard
+              chapter={index + 1}
+              name={project.name}
+              question={project.question[lang]}
+              description={project.description[lang]}
+              tech={project.tech}
+              url={project.url}
+              previewImage={project.previewImage}
+              index={index}
+            />
+            {index < projectsData.length - 1 && (
+              <SignatureDivider className="mt-16" />
+            )}
           </div>
         ))}
       </div>
