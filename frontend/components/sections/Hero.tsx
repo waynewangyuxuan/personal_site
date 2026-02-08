@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 
 const info = {
@@ -8,9 +9,34 @@ const info = {
     en: "MS Computer Science @ UCSD",
     zh: "加州大学圣地亚哥分校 计算机科学硕士",
   },
-  previously: [
-    { en: "ByteDance", zh: "字节跳动" },
-    { en: "NYU Research", zh: "纽约大学研究" },
+  timeline: [
+    {
+      period: "Jun 2025 - Sep 2025",
+      company: { en: "ByteDance", zh: "字节跳动" },
+      role: { en: "Software Engineer Intern", zh: "软件工程实习" },
+      description: {
+        en: "Agentic data Copilot for TikTok Ads: RAG + Agent LLM stack, 1000+ MAU",
+        zh: "TikTok 广告 Agentic Copilot：RAG + Agent LLM，1000+ 月活",
+      },
+    },
+    {
+      period: "Jun 2024 - May 2025",
+      company: { en: "NYU Research", zh: "纽约大学研究" },
+      role: { en: "Research Assistant", zh: "研究助理" },
+      description: {
+        en: "Graph-based retrieval pipeline (LADR) with KNN/HNSW expansion",
+        zh: "基于图的检索流水线 (LADR)，KNN/HNSW 扩展",
+      },
+    },
+    {
+      period: "Jun 2023 - Aug 2023",
+      company: { en: "CITIC Poly Fund", zh: "中信保诚基金" },
+      role: { en: "Data Engineering Intern", zh: "数据工程实习" },
+      description: {
+        en: "Investment-intelligence platform: NLP pipeline + Streamlit dashboard",
+        zh: "投研智能平台：NLP 流水线 + Streamlit 可视化",
+      },
+    },
   ],
   contact: {
     email: "w.wayne.vip@gmail.com",
@@ -19,12 +45,91 @@ const info = {
   },
 };
 
+// Timeline item component
+function TimelineItem({
+  item,
+  index,
+  isExpanded,
+  onToggle,
+  lang,
+}: {
+  item: (typeof info.timeline)[0];
+  index: number;
+  isExpanded: boolean;
+  onToggle: () => void;
+  lang: "en" | "zh";
+}) {
+  return (
+    <motion.div
+      className="relative pl-6 cursor-pointer group"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+      onClick={onToggle}
+    >
+      {/* Timeline dot */}
+      <motion.div
+        className="absolute left-0 top-[6px] w-2 h-2 rounded-full bg-[var(--gray-300)] group-hover:bg-[var(--foreground)] transition-colors"
+        animate={{ scale: isExpanded ? 1.25 : 1 }}
+      />
+
+      {/* Timeline line */}
+      {index < info.timeline.length - 1 && (
+        <div className="absolute left-[3px] top-4 w-[2px] h-[calc(100%+8px)] bg-[var(--gray-200)]" />
+      )}
+
+      {/* Content */}
+      <div className="pb-4">
+        <div className="flex items-baseline justify-between gap-4">
+          <p
+            className="text-base font-medium group-hover:text-[var(--foreground)] transition-colors"
+            style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+          >
+            {item.company[lang]}
+          </p>
+          <p className="mono text-xs text-[var(--gray-400)] shrink-0">
+            {item.period}
+          </p>
+        </div>
+
+        <p
+          className="text-sm text-[var(--muted)]"
+          style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+        >
+          {item.role[lang]}
+        </p>
+
+        {/* Expandable description */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.p
+              className="text-sm text-[var(--foreground)] mt-2 leading-relaxed"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+            >
+              {item.description[lang]}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Hero() {
   const { t, lang } = useI18n();
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
     <section className="min-h-screen flex flex-col justify-center page-container relative">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start lg:items-center">
         {/* Left: Name + Taglines + Signature */}
         <div className="lg:col-span-7">
           {/* Name */}
@@ -71,70 +176,80 @@ export function Hero() {
           </motion.p>
         </div>
 
-        {/* Right: Info */}
-        <motion.div
-          className="lg:col-span-5 space-y-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
+        {/* Right: Interactive Timeline */}
+        <div className="lg:col-span-5">
           {/* Currently */}
-          <div>
-            <p className="mono text-xs text-[var(--gray-400)] mb-1 uppercase tracking-wider">
+          <motion.div
+            className="mb-6"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <p className="mono text-xs text-[var(--gray-400)] mb-2 uppercase tracking-wider">
               {lang === "en" ? "Currently" : "目前"}
             </p>
             <p
-              className="text-sm"
+              className="text-base font-medium"
               style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
             >
               {info.currently[lang]}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Previously */}
-          <div>
-            <p className="mono text-xs text-[var(--gray-400)] mb-1 uppercase tracking-wider">
+          {/* Timeline */}
+          <div className="mb-6">
+            <p className="mono text-xs text-[var(--gray-400)] mb-3 uppercase tracking-wider">
               {lang === "en" ? "Previously" : "之前"}
             </p>
-            <p
-              className="text-sm"
-              style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-            >
-              {info.previously.map((p) => p[lang]).join(", ")}
-            </p>
+            <div>
+              {info.timeline.map((item, index) => (
+                <TimelineItem
+                  key={item.company.en}
+                  item={item}
+                  index={index}
+                  isExpanded={expandedIndex === index}
+                  onToggle={() => handleToggle(index)}
+                  lang={lang}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Contact */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
             <p className="mono text-xs text-[var(--gray-400)] mb-2 uppercase tracking-wider">
               {lang === "en" ? "Contact" : "联系"}
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href={`mailto:${info.contact.email}`}
-                className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                className="text-base text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
               >
-                Email
+                Email ↗
               </a>
               <a
                 href={info.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                className="text-base text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
               >
-                GitHub
+                GitHub ↗
               </a>
               <a
                 href={info.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                className="text-base text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
               >
-                LinkedIn
+                LinkedIn ↗
               </a>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
