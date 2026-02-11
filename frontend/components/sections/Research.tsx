@@ -12,16 +12,14 @@ const publications = [
   {
     id: "01",
     title: "Temporal Leakage in Search-Engine Date-Filtered Web Retrieval",
-    venue: "arXiv",
-    authors: "4th author",
+    venue: "arXiv (pending for ACL 2026)",
     stat: "71% of date-filtered queries return post-cutoff data",
     link: null,
   },
   {
     id: "02",
     title: "Simulated Ignorance Fails",
-    venue: "arXiv",
-    authors: "2nd author",
+    venue: "arXiv (pending for IJCAI 2026)",
     stat: "52% performance gap when simulating ignorance",
     link: "https://arxiv.org/abs/2601.13717",
   },

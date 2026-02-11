@@ -15,8 +15,8 @@ const projectsData = [
       zh: "让AI学会讲故事",
     },
     description: {
-      en: "Local-first CLI tool for writing long-form fiction with AI that understands story structure",
-      zh: "本地优先的 AI 写作工具，让 AI 真正理解故事结构",
+      en: "Turns AI from a text generator into a story architect.",
+      zh: "让 AI 从文字生成器变成故事架构师。",
     },
     tech: ["Rust", "React", "Gemini API"],
     url: "https://inxtone.com",
@@ -30,8 +30,8 @@ const projectsData = [
       zh: "AI 学习画布",
     },
     description: {
-      en: "Turn AI conversations into explorable knowledge graphs",
-      zh: "把 AI 对话变成可探索的知识图谱",
+      en: "transforms documents into interactive knowledge graphs for active learning",
+      zh: "将文档转化为交互式知识图谱，实现主动学习",
     },
     tech: ["Python", "Multi-Agent", "Knowledge-Graph"],
     url: "https://graphex.app",
@@ -45,8 +45,8 @@ const projectsData = [
       zh: "知识层",
     },
     description: {
-      en: "Automatic capture, human-friendly retrieval",
-      zh: "自动捕获，人性化检索",
+      en: "Quick capture, never miss another idea",
+      zh: "桌面速记，再也不错过任何一个想法",
     },
     tech: ["Rust", "React", "SQLite", "LanceDB"],
     url: "https://vw-ai.github.io/Notate.ai/",
