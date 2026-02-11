@@ -7,6 +7,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Wayne Wang | 王宇轩",
   description: "Building systems that think. Questioning systems that predict.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Wayne Wang | 王宇轩",
     description: "Building systems that think. Questioning systems that predict.",
