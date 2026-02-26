@@ -14,6 +14,7 @@ const publications = [
     title: "Temporal Leakage in Search-Engine Date-Filtered Web Retrieval",
     venue: "arXiv (pending for ACL 2026)",
     stat: "71% of date-filtered queries return post-cutoff data",
+    authors: "Yuxuan Wang et al.",
     link: null,
   },
   {
@@ -21,6 +22,7 @@ const publications = [
     title: "Simulated Ignorance Fails",
     venue: "arXiv (pending for IJCAI 2026)",
     stat: "52% performance gap when simulating ignorance",
+    authors: "Yuxuan Wang et al.",
     link: "https://arxiv.org/abs/2601.13717",
   },
 ];
@@ -33,7 +35,7 @@ const durations = {
 };
 
 const easings = {
-  smooth: [0.16, 1, 0.3, 1],
+  smooth: [0.16, 1, 0.3, 1] as [number, number, number, number],
 };
 
 function PublicationCard({ paper, index, lang }: { paper: typeof publications[0]; index: number; lang: "en" | "zh" }) {
