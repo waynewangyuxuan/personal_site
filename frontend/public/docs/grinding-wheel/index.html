@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 驱动跨境销售方案 — 中国砂轮 → 俄罗斯</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-warm: #fafaf8;
+    --bg-subtle: #f4f3f0;
+    --bg-hover: #eeedea;
+    --border: #e2e0db;
+    --border-light: #eeede9;
+    --text-primary: #1a1a18;
+    --text-secondary: #4a4a45;
+    --text-tertiary: #8a8a82;
+    --text-muted: #b0afa8;
+    --accent: #2a2a28;
+    --accent-blue: #3d5a80;
+    --accent-teal: #5b8a8a;
+    --accent-warm: #b07a50;
+    --accent-green: #6a8a5a;
+    --accent-red: #a05050;
+    --accent-purple: #7a6a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══ NAV ═══ */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  nav .logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  nav .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav .nav-links a {
+    color: var(--text-tertiary);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav .nav-links a:hover { color: var(--text-primary); }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10rem 8rem 8rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text-primary);
+    max-width: 800px;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 strong {
+    font-weight: 700;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    font-weight: 300;
+    line-height: 1.9;
+  }
+
+  .hero-metrics {
+    margin-top: 5rem;
+    display: flex;
+    gap: 5rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .metric .number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .metric .desc {
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══ SECTION ═══ */
+  section {
+    padding: 6rem 8rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section-alt { background: var(--bg-warm); }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .section-desc {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 620px;
+    line-height: 1.9;
+  }
+
+  /* ═══ GRID CARDS ═══ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .card {
+    padding: 2.2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .card:hover {
+    border-color: var(--text-muted);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+  }
+
+  .card .big-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .card .big-label {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .card h3 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+  }
+
+  .card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .card.featured {
+    border-color: var(--text-primary);
+    border-width: 2px;
+  }
+
+  /* ═══ PIPELINE ═══ */
+  .pipeline-row {
+    display: flex;
+    margin-top: 3rem;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .pipeline-step {
+    flex: 1;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    position: relative;
+    background: var(--bg);
+  }
+
+  .pipeline-step:last-child { border-right: none; }
+
+  .pipeline-step:hover { background: var(--bg-warm); }
+
+  .step-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .step-title {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+  }
+
+  .step-arrow {
+    position: absolute;
+    right: -0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    z-index: 2;
+  }
+
+  /* ═══ CHANNELS ═══ */
+  .channel-section-title {
+    font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid var(--text-primary);
+    display: inline-block;
+  }
+
+  .channel-section-title:first-of-type { margin-top: 3rem; }
+
+  .channel-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .channel-item {
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    position: relative;
+  }
+
+  .channel-item:hover {
+    border-color: var(--text-muted);
+  }
+
+  .channel-priority {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .cp-high {
+    background: var(--text-primary);
+    color: var(--bg);
+  }
+
+  .cp-mid {
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  .cp-low {
+    background: var(--bg-warm);
+    color: var(--text-tertiary);
+    border: 1px solid var(--border-light);
+  }
+
+  .channel-item h4 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    padding-right: 80px;
+  }
+
+  .channel-item p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .channel-meta {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .channel-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+  }
+
+  .ai-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  /* ═══ AI ARCHITECTURE ═══ */
+  .arch-stack {
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .arch-layer {
+    display: grid;
+    grid-template-columns: 180px 1fr 160px;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .arch-layer:last-child { border-bottom: none; }
+  .arch-layer:nth-child(even) { background: var(--bg-warm); }
+
+  .layer-title {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .layer-title small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 0.2rem;
+  }
+
+  .layer-desc {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  .layer-tech { text-align: right; }
+
+  .tech-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin: 0.12rem;
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+  }
+
+  /* ═══ COMPLIANCE ═══ */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .signal-card {
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+
+  .signal-card.go {
+    border-color: #b5c9a8;
+    background: #f7faf5;
+  }
+
+  .signal-card.caution {
+    border-color: #d9c89e;
+    background: #fdfbf5;
+  }
+
+  .signal-card.stop {
+    border-color: #d4a5a5;
+    background: #fdf6f6;
+  }
+
+  .signal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+
+  .go .signal-dot { background: var(--accent-green); }
+  .caution .signal-dot { background: var(--accent-warm); }
+  .stop .signal-dot { background: var(--accent-red); }
+
+  .signal-card h4 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .signal-card p {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ═══ TIMELINE ═══ */
+  .timeline {
+    margin-top: 3rem;
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--text-primary), var(--text-muted), var(--border));
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 3.5rem 2.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--text-primary);
+    background: var(--bg);
+  }
+
+  .tl-item:nth-child(2)::before { border-color: var(--accent-blue); }
+  .tl-item:nth-child(3)::before { border-color: var(--accent-teal); }
+  .tl-item:nth-child(4)::before { border-color: var(--accent-warm); }
+
+  .tl-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-item h4 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-item p {
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  .tl-tags {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tl-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 3px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  /* ═══ COST TABLE ═══ */
+  .cost-table {
+    width: 100%;
+    margin-top: 3rem;
+    border-collapse: collapse;
+    font-size: 0.86rem;
+  }
+
+  .cost-table th {
+    font-family: 'JetBrains Mono', 'Noto Sans SC', monospace;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    border-bottom: 2px solid var(--text-primary);
+  }
+
+  .cost-table td {
+    padding: 0.9rem 1.2rem;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-secondary);
+  }
+
+  .cost-table tr:hover td { background: var(--bg-warm); }
+
+  .cost-table .total-row td {
+    border-top: 2px solid var(--text-primary);
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+  }
+
+  /* ═══ FOOTER ═══ */
+  footer {
+    padding: 4rem 8rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  footer .conf {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ═══ FADE-IN ═══ */
+  .fi {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fi.visible { opacity: 1; transform: translateY(0); }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 960px) {
+    section, .hero { padding: 3rem 2rem; }
+    nav { padding: 1rem 1.5rem; }
+    .card-grid, .channel-list, .signal-grid { grid-template-columns: 1fr; }
+    .pipeline-row { flex-direction: column; }
+    .pipeline-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .pipeline-step:last-child { border-bottom: none; }
+    .arch-layer { grid-template-columns: 1fr; }
+    .layer-tech { text-align: left; }
+    .hero-metrics { flex-direction: column; gap: 2rem; }
+    nav .nav-links { gap: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Abrasive · AI</div>
+  <ul class="nav-links">
+    <li><a href="#market">市场</a></li>
+    <li><a href="#pipeline">销售链路</a></li>
+    <li><a href="#channels">触达渠道</a></li>
+    <li><a href="#system">AI 系统</a></li>
+    <li><a href="#roadmap">执行计划</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <span class="hero-label">可行性研究 & 销售策略方案 — 2026.02</span>
+  <h1>AI 驱动的<strong>跨境砂轮销售引擎</strong></h1>
+  <p class="hero-sub">
+    西方制裁切断了俄罗斯从日韩美进口砂轮的渠道。中国成为唯一替代。本方案设计一套 AI 销售系统，在俄罗斯零驻场的前提下，完成从获客到复购的完整闭环。
+  </p>
+  <div class="hero-metrics">
+    <div class="metric">
+      <span class="number">71%</span>
+      <span class="desc">中国占俄罗斯机床进口份额</span>
+    </div>
+    <div class="metric">
+      <span class="number">3,365+</span>
+      <span class="desc">2023-24 年中→俄砂轮出口批次</span>
+    </div>
+    <div class="metric">
+      <span class="number">$41.5B</span>
+      <span class="desc">全球磨料市场规模 (2024)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 01 MARKET ═══ -->
+<section class="section-alt fi" id="market">
+  <span class="section-label">01 — 市场机会</span>
+  <h2 class="section-title">一个只有中国能填的供应真空</h2>
+  <p class="section-desc">制裁创造了结构性缺口。需求是刚性的、增长的、且供不应求的。</p>
+
+  <div class="card-grid">
+    <div class="card featured">
+      <span class="big-number">98.3%</span>
+      <span class="big-label">俄罗斯精密数控设备对外依赖率</span>
+      <p>有机床就需要砂轮。俄罗斯无法自产精密设备，每一台进口 CNC 都需要持续消耗磨料。砂轮是高频复购的刚需消耗品。</p>
+    </div>
+    <div class="card">
+      <span class="big-number">#3</span>
+      <span class="big-label">俄罗斯在中国砂轮出口中排名</span>
+      <p>仅次于美国和印度。贸易通道已经成熟，物流和支付方案已被大量验证。</p>
+    </div>
+    <div class="card">
+      <h3>本土产能遭受打击</h3>
+      <p>俄罗斯最大磨料生产商伏尔加磨料厂 (Volzhsky Abrasive Works) 于 2025 年 1 月被美国直接制裁。俄罗斯自身的砂轮产能在萎缩，而非增长。</p>
+    </div>
+    <div class="card">
+      <h3>利润空间正在扩大</h3>
+      <p>制裁前中国砂轮只能竞争中低端市场。日韩退出后，中高端市场出现真空——同样的产品可以卖到更高的价格带。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 02 PIPELINE ═══ -->
+<section class="fi" id="pipeline">
+  <span class="section-label">02 — 销售链路设计</span>
+  <h2 class="section-title">五个阶段，从零到持续复购</h2>
+  <p class="section-desc">每个阶段有明确的瓶颈，也有明确的 AI 介入点。</p>
+
+  <div class="pipeline-row">
+    <div class="pipeline-step">
+      <span class="step-num">01</span>
+      <div class="step-title">发现</div>
+      <div class="step-desc">找到需要砂轮的俄罗斯工厂——尤其是失去日韩供应商的那批</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="step-num">02</span>
+      <div class="step-title">触达</div>
+      <div class="step-desc">用俄语、大规模地联系他们，跨邮件、Telegram、B2B平台</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="step-num">03</span>
+      <div class="step-title">转化</div>
+      <div class="step-desc">处理规格确认、报价、样品——快速响应，7×24，用他们的语言</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="step-num">04</span>
+      <div class="step-title">交付</div>
+      <div class="step-desc">下单、人民币收款、铁路发货（满洲里）、清关</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="pipeline-step">
+      <span class="step-num">05</span>
+      <div class="step-title">复购</div>
+      <div class="step-desc">预测补货周期，主动联系客户，一次性买家变长期账户</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 CHANNELS ═══ -->
+<section class="section-alt fi" id="channels">
+  <span class="section-label">03 — 触达渠道矩阵</span>
+  <h2 class="section-title">八个渠道，覆盖主动出击和被动引流</h2>
+  <p class="section-desc">俄罗斯有独立的互联网生态。Yandex 替代 Google，Telegram 替代邮件，VK 替代 Facebook。打法必须本地化。</p>
+
+  <div class="channel-section-title">主动出击 — 我们找他们</div>
+  <div class="channel-list">
+    <div class="channel-item">
+      <span class="channel-priority cp-high">最高优先</span>
+      <h4>海关数据反查</h4>
+      <p>通过 Tendata、Volza 等平台，按 HS 6804 反查俄罗斯的砂轮进口记录。直接拿到进口商名称、地址、进口量、金额。重点筛选制裁前从日韩进口的企业——他们是最高意向的客户。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">输出：公司名 / 联系方式 / 采购量 → CRM</span>
+        <span class="ai-badge">AI 自动清洗 & 评分</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-high">最高优先</span>
+      <h4>Telegram 直接触达</h4>
+      <p>50%+ 俄罗斯人每天使用 Telegram。2025 年它已是成熟的 B2B 销售渠道。加入金属加工、磨料采购群组，私信目标客户。俄罗斯人对 Telegram 私信的接受度远高于邮件。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">关键词：металлообработка, абразивы</span>
+        <span class="ai-badge">AI 俄语消息生成 & 自动跟进</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-mid">第二周启动</span>
+      <h4>AI 冷邮件系统</h4>
+      <p>个性化俄语邮件序列。不是群发，而是根据每家企业的行业、规模、过去采购品类定制内容。3 封自动跟进节奏，基于打开 / 回复信号智能调整。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">工具：Coldy.ai / Snov.io / 自建 LLM Pipeline</span>
+        <span class="ai-badge">AI 超个性化 × 规模化</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-mid">第二周启动</span>
+      <h4>B2B 平台主动出击</h4>
+      <p>Pulscen.ru（日活 30 万）、Tiu.ru（日活 720 万）、Metaprom.ru（50 万注册工业企业）上有大量砂轮采购需求。监控新发布的采购信息，数小时内响应。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">Metaprom：冶金、机械、能源 — 匹配度最高</span>
+        <span class="ai-badge">AI 需求监控 & 自动响应</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="channel-section-title">被动引流 — 他们找我们</div>
+  <div class="channel-list">
+    <div class="channel-item">
+      <span class="channel-priority cp-mid">第三周启动</span>
+      <h4>Yandex 搜索广告</h4>
+      <p>俄罗斯人用 Yandex 搜索，不用 Google。投放意图关键词："шлифовальный круг купить"（砂轮购买）、"абразивы из Китая"（中国磨料）。2024 年起 Yandex 已支持 Telegram 广告投放。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">意图流量 — 转化率最高的广告渠道</span>
+        <span class="ai-badge">AI 动态出价 & 文案优化</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-mid">第三周启动</span>
+      <h4>B2B 平台店铺</h4>
+      <p>在 Pulscen、Tiu、Metaprom 上建立俄语产品目录。平台商品信息会同步到 Yandex 搜索结果——免费 SEO。65% 的俄罗斯 B2B 采购者已使用平台模式。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">产品规格需对标 GOST 标准以建立信任</span>
+        <span class="ai-badge">AI 产品目录翻译 & SEO</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-low">第二月启动</span>
+      <h4>VKontakte 品牌建设</h4>
+      <p>VK 月活 9,200 万。适合品牌曝光和再营销：产品测评视频、客户案例、技术对比。当客户收到你的开发信或看到广告时，VK 上的内容可以增加信任背书。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">目标人群：35-44 岁（制造业决策者）</span>
+        <span class="ai-badge">AI 内容生成 & 受众定向</span>
+      </div>
+    </div>
+    <div class="channel-item">
+      <span class="channel-priority cp-low">第二月启动</span>
+      <h4>行业展会（线上 + 线下）</h4>
+      <p>Metalloobrabotka（莫斯科国际机床展）是核心展会。现有线上参展选项，成本低，适合初期市场验证。线下展位可在 pipeline 跑通后再投入。</p>
+      <div class="channel-meta">
+        <span class="channel-detail">线上展位 ¥1.5-3.5万 ｜ 线下展位 ¥10-20万</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 AI SYSTEM ═══ -->
+<section class="fi" id="system">
+  <span class="section-label">04 — AI 系统架构</span>
+  <h2 class="section-title">四层智能栈</h2>
+  <p class="section-desc">AI 不替代销售流程，而是消除语言障碍，把一个人的产能放大 50-100 倍。</p>
+
+  <div class="arch-stack">
+    <div class="arch-layer">
+      <div class="layer-title">数据引擎<small>Layer 1 — 基础层</small></div>
+      <div class="layer-desc">持续采集俄罗斯海关数据（HS 6804）、监控 B2B 平台需求信号、自动补全企业画像。构建并维护一个活的俄罗斯砂轮买家数据库——按采购历史、行业、意向信号评分。</div>
+      <div class="layer-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Scrapy</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">Tendata API</span>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="layer-title">AI 销售代表<small>Layer 2 — 触达层</small></div>
+      <div class="layer-desc">自主式 AI SDR。生成个性化俄语开发内容（邮件 + Telegram），执行多渠道触达节奏，处理初步回复，筛选合格线索后移交真人。一个 AI SDR 的吞吐量 = 100 个人类 SDR。</div>
+      <div class="layer-tech">
+        <span class="tech-tag">LLM</span>
+        <span class="tech-tag">Coldy.ai</span>
+        <span class="tech-tag">Telegram Bot</span>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="layer-title">销售助手<small>Layer 3 — 转化层</small></div>
+      <div class="layer-desc">双语实时助手。自动生成报价单、翻译技术参数（中↔俄）、7×24 回复产品 FAQ、起草合同条款。解决 5 小时时差问题——客户秒收回复，而非等到次日。</div>
+      <div class="layer-tech">
+        <span class="tech-tag">RAG</span>
+        <span class="tech-tag">产品知识库</span>
+        <span class="tech-tag">Telegram Bot</span>
+      </div>
+    </div>
+    <div class="arch-layer">
+      <div class="layer-title">留存引擎<small>Layer 4 — 增长层</small></div>
+      <div class="layer-desc">追踪客户消耗节奏，预测补货时间，主动触达。推荐交叉销售机会（例如买切割片的客户可能也需要磨片）。把一次性买家变成经常性收入账户。</div>
+      <div class="layer-tech">
+        <span class="tech-tag">数据分析</span>
+        <span class="tech-tag">预测模型</span>
+        <span class="tech-tag">CRM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 COMPLIANCE ═══ -->
+<section class="section-alt fi" id="compliance">
+  <span class="section-label">05 — 合规 & 风险</span>
+  <h2 class="section-title">行动之前，先看清红线</h2>
+
+  <div class="signal-grid">
+    <div class="signal-card go">
+      <h4><span class="signal-dot"></span>可以推进</h4>
+      <p>普通砂轮（树脂、陶瓷结合剂）HS 6804.22 — 无中国出口管制，无特殊许可证。人民币通过 CIPS 系统结算完全畅通。铁路物流（满洲里口岸）成熟可靠，15-20 天到莫斯科。</p>
+    </div>
+    <div class="signal-card caution">
+      <h4><span class="signal-dot"></span>需要准备</h4>
+      <p>EAC 认证（原 GOST-R）是俄罗斯市场准入的强制要求。办理周期 1-2 个月，费用 ¥5,000-15,000，有效期 3 年。必须在首批商业发货前完成。俄罗斯清关必须委托当地报关行。</p>
+    </div>
+    <div class="signal-card stop">
+      <h4><span class="signal-dot"></span>红线</h4>
+      <p>金刚石和 CBN（立方氮化硼）超硬砂轮可能属于中国商务部《两用物项出口管制清单》范畴——需要出口许可证审批。如产品被错误归类或转作军用，存在次级制裁风险。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 06 ROADMAP ═══ -->
+<section class="fi" id="roadmap">
+  <span class="section-label">06 — 执行路线图</span>
+  <h2 class="section-title">8 周，从零到首单</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-time">第 1-2 周 — 基础搭建</span>
+      <h4>产品梳理 & 合规准备</h4>
+      <p>审计产品线，确认 HS 编码，启动 EAC 认证申请。开通人民币跨境收款通道。确定满洲里铁路物流合作方。</p>
+      <div class="tl-tags">
+        <span class="tl-tag">HS 编码确认</span>
+        <span class="tl-tag">EAC 申请</span>
+        <span class="tl-tag">银行开户</span>
+        <span class="tl-tag">物流询价</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">第 2-3 周 — 数据 & 情报</span>
+      <h4>构建潜客数据库</h4>
+      <p>购买俄罗斯 HS 6804 海关数据，筛选曾从日韩进口的企业。通过 B2B 平台和 Telegram 补全联系方式。评分排序，锁定 Top 200 目标客户。</p>
+      <div class="tl-tags">
+        <span class="tl-tag">海关数据采购</span>
+        <span class="tl-tag">企业画像补全</span>
+        <span class="tl-tag">意向评分模型</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">第 3-5 周 — 规模化触达</span>
+      <h4>启动 AI 外呼系统</h4>
+      <p>部署 AI SDR。通过 Telegram DM 和邮件进行个性化俄语外呼，3 触点节奏。同步在 Pulscen、Metaprom 开设店铺。上线 Yandex 搜索广告。</p>
+      <div class="tl-tags">
+        <span class="tl-tag">AI SDR 上线</span>
+        <span class="tl-tag">Telegram 外呼</span>
+        <span class="tl-tag">Yandex 广告</span>
+        <span class="tl-tag">平台开店</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">第 5-8 周 — 转化闭环</span>
+      <h4>首单 & 迭代</h4>
+      <p>转化意向客户。寄送样品（小批量样品通常可免 EAC）。处理首批商业订单。基于数据反馈优化 AI 系统。开始构建复购预测模型。</p>
+      <div class="tl-tags">
+        <span class="tl-tag">样品寄送</span>
+        <span class="tl-tag">首批商业订单</span>
+        <span class="tl-tag">反馈循环</span>
+        <span class="tl-tag">系统优化</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 COST ═══ -->
+<section class="section-alt fi" id="cost">
+  <span class="section-label">07 — 投入估算</span>
+  <h2 class="section-title">精益启动，不是重资产</h2>
+  <p class="section-desc">整个第一阶段投入低于 ¥10 万——比雇一个俄语销售一年的成本还少。</p>
+
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>项目</th>
+        <th>费用 (¥)</th>
+        <th>频率</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>俄罗斯海关数据（HS 6804）</td>
+        <td>3,000 – 8,000</td>
+        <td>一次性</td>
+        <td>Tendata / Volza 订阅</td>
+      </tr>
+      <tr>
+        <td>EAC 认证</td>
+        <td>5,000 – 15,000</td>
+        <td>每 3 年</td>
+        <td>按产品品类分别办理</td>
+      </tr>
+      <tr>
+        <td>AI 外呼工具</td>
+        <td>2,000 – 5,000</td>
+        <td>每月</td>
+        <td>LLM API + 邮件/Telegram 自动化</td>
+      </tr>
+      <tr>
+        <td>Yandex 搜索广告</td>
+        <td>5,000 – 15,000</td>
+        <td>每月</td>
+        <td>小规模起步，按 ROI 扩量</td>
+      </tr>
+      <tr>
+        <td>B2B 平台会员</td>
+        <td>3,000 – 8,000</td>
+        <td>每年</td>
+        <td>Pulscen + Metaprom 高级版</td>
+      </tr>
+      <tr>
+        <td>俄语翻译 & 审校</td>
+        <td>2,000 – 5,000</td>
+        <td>一次性</td>
+        <td>产品目录 + 网站本地化</td>
+      </tr>
+      <tr>
+        <td>出口信用保险（中信保）</td>
+        <td>出口额 1-2%</td>
+        <td>每单</td>
+        <td>可选，建议购买</td>
+      </tr>
+      <tr class="total-row">
+        <td>第一阶段合计（前 3 个月）</td>
+        <td>50,000 – 80,000</td>
+        <td></td>
+        <td>不含产品及运费成本</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p class="conf">Confidential — 仅供内部讨论</p>
+  <p>2026 年 2 月 · AI 驱动跨境砂轮销售方案 · Abrasive.AI</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
