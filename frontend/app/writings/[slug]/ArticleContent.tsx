@@ -40,7 +40,7 @@ export function ArticleContent({
       {/* Header */}
       <header className="mb-12 content-width">
         <motion.p
-          className="mono text-xs text-[var(--gray-400)] mb-4"
+          className="mono text-xs text-[var(--gray-500)] mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1, ease }}

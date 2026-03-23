@@ -179,7 +179,7 @@ export function TimelineItem({
           >
             {title}
           </motion.h4>
-          <span className="mono text-xs text-[var(--gray-400)] shrink-0">
+          <span className="mono text-xs text-[var(--gray-500)] shrink-0">
             {period}
           </span>
         </div>
@@ -206,7 +206,7 @@ export function TimelineItem({
         {/* Expand indicator */}
         {description && (
           <motion.span
-            className="inline-block text-xs text-[var(--gray-400)] mt-2"
+            className="inline-block text-xs text-[var(--gray-500)] mt-2"
             animate={{ opacity: isExpanded ? 0 : 1 }}
           >
             + more
@@ -382,7 +382,7 @@ export function ProjectCard({
               className="text-[80px] md:text-[100px] font-bold leading-none select-none"
               style={{
                 fontFamily: "var(--font-display)",
-                color: isHovered ? "var(--gray-300)" : "var(--gray-200)",
+                color: isHovered ? "var(--gray-400)" : "var(--gray-300)",
                 transition: "color 0.3s ease"
               }}
             >

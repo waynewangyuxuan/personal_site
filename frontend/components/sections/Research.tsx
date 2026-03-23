@@ -54,7 +54,7 @@ function PublicationCard({ paper, index, lang }: { paper: typeof publications[0]
       <motion.span
         className="mono text-3xl font-bold leading-none select-none shrink-0"
         style={{
-          color: isHovered ? "var(--gray-300)" : "var(--gray-200)",
+          color: isHovered ? "var(--gray-400)" : "var(--gray-300)",
           transition: "color 0.2s ease",
         }}
       >
@@ -93,7 +93,7 @@ function PublicationCard({ paper, index, lang }: { paper: typeof publications[0]
           {paper.stat}
         </motion.p>
         <motion.p
-          className="mono text-xs text-[var(--gray-400)]"
+          className="mono text-xs text-[var(--gray-500)]"
           animate={{ x: isHovered ? 4 : 0 }}
           transition={{ duration: durations.fast, delay: 0.04 }}
         >
