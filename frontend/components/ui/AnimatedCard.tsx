@@ -7,8 +7,8 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 // DESIGN TOKENS
 // ============================================
 const easings = {
-  smooth: [0.16, 1, 0.3, 1],
-  bounce: [0.34, 1.56, 0.64, 1],
+  smooth: [0.16, 1, 0.3, 1] as [number, number, number, number],
+  bounce: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
   gentle: [0.4, 0, 0.2, 1],
 };
 

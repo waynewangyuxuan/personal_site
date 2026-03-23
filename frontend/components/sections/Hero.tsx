@@ -3,22 +3,9 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { TimelineItem } from "@/components/ui/AnimatedCard";
+import { education } from "@/lib/content";
 
 const info = {
-  education: [
-    {
-      degree: { en: "MS Computer Science", zh: "计算机科学硕士" },
-      school: { en: "UC San Diego", zh: "加州大学圣地亚哥分校" },
-      year: "2024 - 2026",
-      note: null,
-    },
-    {
-      degree: { en: "BS Computer Science", zh: "计算机科学学士" },
-      school: { en: "NYU Tandon", zh: "纽约大学工学院" },
-      year: "2021 - 2025",
-      note: { en: "Summa Cum Laude", zh: "最优等毕业" },
-    },
-  ],
   timeline: [
     {
       period: "Jun 2025 - Sep 2025",
@@ -50,8 +37,8 @@ const info = {
   ],
   contact: {
     email: "w.wayne.vip@gmail.com",
-    github: "https://github.com/vw-wang",
-    linkedin: "https://linkedin.com/in/wayne-wang",
+    github: "https://github.com/waynewangyuxuan",
+    linkedin: "https://www.linkedin.com/in/wayne-wang-yuxuan",
   },
 };
 
@@ -137,7 +124,7 @@ export function Hero() {
               {lang === "en" ? "Education" : "教育"}
             </p>
             <div className="space-y-2">
-              {info.education.map((edu, i) => (
+              {education.map((edu, i) => (
                 <div key={i}>
                   <p
                     className="text-base font-medium"
@@ -150,7 +137,7 @@ export function Hero() {
                       </span>
                     )}
                   </p>
-                  <p className="mono text-xs text-[var(--gray-400)]">{edu.year}</p>
+                  <p className="mono text-xs text-[var(--gray-400)]">{edu.period}</p>
                 </div>
               ))}
             </div>

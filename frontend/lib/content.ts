@@ -130,16 +130,18 @@ export const experience = [
 
 export const education = [
   {
-    school: "UC San Diego",
-    degree: "MS Computer Science",
+    school: { en: "UC San Diego", zh: "加州大学圣地亚哥分校" },
+    degree: { en: "MS Computer Science", zh: "计算机科学硕士" },
     period: "2025 – 2027",
     current: true,
+    note: null as { en: string; zh: string } | null,
   },
   {
-    school: "NYU Tandon",
-    degree: "BS Computer Science, Math Minor",
+    school: { en: "NYU Tandon", zh: "纽约大学工学院" },
+    degree: { en: "BS Computer Science, Math Minor", zh: "计算机科学学士" },
     period: "2021 – 2025",
     current: false,
+    note: { en: "Summa Cum Laude", zh: "最优等毕业" },
   },
 ];
 

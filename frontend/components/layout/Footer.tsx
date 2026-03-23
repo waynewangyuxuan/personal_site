@@ -27,7 +27,7 @@ export function Footer() {
             Email
           </a>
           <a
-            href="https://github.com/vw-wang"
+            href="https://github.com/waynewangyuxuan"
             target="_blank"
             rel="noopener noreferrer"
             className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
@@ -35,7 +35,7 @@ export function Footer() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/wayne-wang"
+            href="https://www.linkedin.com/in/wayne-wang-yuxuan"
             target="_blank"
             rel="noopener noreferrer"
             className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
