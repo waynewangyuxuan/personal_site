@@ -26,19 +26,25 @@
   --gray-100: #f5f5f4;
   --gray-200: #e7e5e4;
   --gray-300: #d6d3d1;
-  --gray-400: #a8a29e;
-  --gray-500: #78716c;
-  --gray-600: #57534e;
-  --gray-700: #44403c;
-  --gray-800: #292524;
-  --gray-900: #1c1917;
+  --gray-400: #1c1917;
+  --gray-500: #2e2a26;
+  --gray-600: #252220;
+  --gray-700: #1c1917;
+  --gray-800: #141210;
+  --gray-900: #0c0a09;
+
+  /* Page backgrounds */
+  --bg-home: #fafaf9;
+  --bg-projects: #f0e8df;
+  --bg-research: #e8ecf2;
+  --bg-writing: #f0ede4;
 
   /* Semantic */
   --background: var(--paper);
   --foreground: var(--ink);
-  --muted: var(--gray-500);
+  --muted: var(--ink);
   --border: var(--gray-200);
-  --accent: var(--gray-600);
+  --accent: var(--ink);
 
   /* Fonts */
   --font-display: 'Syne', sans-serif;
@@ -93,7 +99,7 @@ html {
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--paper);
   color: var(--foreground);
   font-family: var(--font-body);
   font-weight: 400;
@@ -333,6 +339,95 @@ h3 {
   }
 }
 
+/* ============================================
+   PROSE - Article content styling
+   ============================================ */
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.prose h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--gray-300);
+  transition: text-decoration-color var(--duration-normal);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--foreground);
+}
+
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  border-left: 2px solid var(--gray-300);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--gray-800);
+  color: var(--gray-100);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+
+.prose pre {
+  background: var(--gray-800);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.prose img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2.5rem 0;
+}
+
 /* Breathing animation for signature */
 .breathe {
   animation: breathe 4s ease-in-out infinite;
@@ -340,7 +435,7 @@ h3 {
 
 @keyframes breathe {
   0%, 100% {
-    opacity: 0.6;
+    opacity: 0.75;
   }
   50% {
     opacity: 1;

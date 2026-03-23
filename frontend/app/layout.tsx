@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageBackground } from "@/components/layout/PageBackground";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <I18nProvider>
+          <PageBackground />
           <Header />
           <main className="min-h-screen pt-16">{children}</main>
           <Footer />

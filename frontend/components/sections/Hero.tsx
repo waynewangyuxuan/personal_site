@@ -27,7 +27,7 @@ const info = {
     },
     {
       period: "Jun 2023 - Aug 2023",
-      company: { en: "CITIC Poly Fund", zh: "中信保诚基金" },
+      company: { en: "CITIC Poly Fund", zh: "信保基金" },
       role: { en: "Data Engineering Intern", zh: "数据工程实习" },
       description: {
         en: "AI that reads the news so you don't have to",

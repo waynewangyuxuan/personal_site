@@ -105,6 +105,7 @@ interface TimelineItemProps {
   title: string;
   subtitle: string;
   description?: string;
+  logo?: string;
   index: number;
   isLast?: boolean;
   defaultExpanded?: boolean;
@@ -115,6 +116,7 @@ export function TimelineItem({
   title,
   subtitle,
   description,
+  logo,
   index,
   isLast = false,
   defaultExpanded = false,
@@ -129,15 +131,26 @@ export function TimelineItem({
       transition={{ duration: durations.slow, delay: 0.1 * index, ease: easings.smooth }}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      {/* Timeline dot with pulse effect */}
-      <motion.div
-        className="absolute left-0 top-[6px] w-2.5 h-2.5 rounded-full border-2 border-[var(--gray-300)] bg-[var(--background)] group-hover:border-[var(--foreground)] transition-colors z-10"
-        animate={{
-          scale: isExpanded ? 1.2 : 1,
-          borderColor: isExpanded ? "var(--foreground)" : undefined,
-        }}
-        transition={{ duration: durations.fast }}
-      />
+      {/* Timeline logo or dot */}
+      {logo ? (
+        <motion.div
+          className="absolute left-[-6px] top-[2px] w-6 h-6 rounded-full overflow-hidden bg-[var(--background)] border border-[var(--gray-200)] group-hover:border-[var(--foreground)] transition-colors z-10 flex items-center justify-center"
+          animate={{ scale: isExpanded ? 1.1 : 1 }}
+          transition={{ duration: durations.fast }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo} alt="" className="w-4 h-4 object-contain" />
+        </motion.div>
+      ) : (
+        <motion.div
+          className="absolute left-0 top-[6px] w-2.5 h-2.5 rounded-full border-2 border-[var(--gray-300)] bg-[var(--background)] group-hover:border-[var(--foreground)] transition-colors z-10"
+          animate={{
+            scale: isExpanded ? 1.2 : 1,
+            borderColor: isExpanded ? "var(--foreground)" : undefined,
+          }}
+          transition={{ duration: durations.fast }}
+        />
+      )}
 
       {/* Pulse ring on hover */}
       <motion.div

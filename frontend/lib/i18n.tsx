@@ -13,7 +13,10 @@ interface I18nContextType {
 const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
+    "nav.home": "Home",
+    "nav.projects": "Projects",
     "nav.research": "Research",
+    "nav.writing": "Writing",
     "nav.work": "Work",
     "nav.about": "About",
 
@@ -58,7 +61,10 @@ My work focuses on mental models—structured ways of understanding that could g
   },
   zh: {
     // Navigation
+    "nav.home": "首页",
+    "nav.projects": "项目",
     "nav.research": "研究",
+    "nav.writing": "写作",
     "nav.work": "作品",
     "nav.about": "关于",
 
