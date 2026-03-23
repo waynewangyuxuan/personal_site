@@ -42,7 +42,7 @@
   /* Semantic */
   --background: var(--paper);
   --foreground: var(--ink);
-  --muted: var(--gray-600);  /* ~9:1 contrast — dark enough to read, softer than ink */
+  --muted: var(--gray-700);  /* ~11:1 contrast — strong readability for all muted text */
   --border: var(--gray-200);
   --accent: var(--gray-700);
 
@@ -66,19 +66,27 @@
   --duration-slow: 0.7s;
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #1c1917;
-    --ink: #e7e5e4;
-    --background: var(--paper);
-    --foreground: var(--ink);
-    --muted: #a8a29e;    /* ~4.5:1 on dark bg */
-    --border: #292524;
-    --accent: #a8a29e;
-    --gray-50: #292524;
-    --gray-400: #a8a29e; /* inverted for dark mode */
-  }
+/* Dark mode — triggered by data-theme="dark" on <html> */
+[data-theme="dark"] {
+  --paper: #1a1918;
+  --ink: #e7e5e4;
+
+  --gray-50:  #1f1d1c;
+  --gray-100: #252321;
+  --gray-200: #2e2a27;
+  --gray-300: #44403c;
+  --gray-400: #a8a29e;
+  --gray-500: #b8b4af;
+  --gray-600: #c8c4bf;
+  --gray-700: #d6d3d1;
+  --gray-800: #292524;
+  --gray-900: #f5f5f4;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: #a8a29e;
+  --border: #2e2a27;
+  --accent: #d6d3d1;
 }
 
 @media (max-width: 768px) {
@@ -97,6 +105,7 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light dark;
 }
 
 body {
@@ -385,16 +394,16 @@ h3 {
 .prose code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: var(--gray-800);
-  color: var(--gray-100);
+  background: var(--foreground);
+  color: var(--background);
   padding: 0.15em 0.4em;
   border-radius: 4px;
 }
 
 .prose pre {
-  background: var(--gray-800);
-  color: var(--gray-100);
-  border: 1px solid var(--gray-700);
+  background: var(--foreground);
+  color: var(--background);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1.25rem;
   overflow-x: auto;

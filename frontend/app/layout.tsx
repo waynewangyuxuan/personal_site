@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { I18nProvider } from "@/lib/i18n";
+import { ThemeProvider } from "@/lib/theme";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageBackground } from "@/components/layout/PageBackground";
@@ -19,20 +20,27 @@ export const metadata: Metadata = {
   },
 };
 
+const themeScript = `(function(){var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;})();`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
-        <I18nProvider>
-          <PageBackground />
-          <Header />
-          <main className="min-h-screen pt-16">{children}</main>
-          <Footer />
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <PageBackground />
+            <Header />
+            <main className="min-h-screen pt-16">{children}</main>
+            <Footer />
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

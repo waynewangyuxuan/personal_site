@@ -45,7 +45,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="mono text-xs text-[var(--gray-500)] text-center">
+        <p className="mono text-xs text-[var(--gray-600)] text-center">
           © {new Date().getFullYear()} Wayne Wang
         </p>
       </div>

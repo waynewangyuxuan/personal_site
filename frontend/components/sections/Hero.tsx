@@ -120,7 +120,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="mono text-xs text-[var(--gray-500)] mb-3 uppercase tracking-wider">
+            <p className="mono text-xs text-[var(--gray-600)] mb-3 uppercase tracking-wider">
               {lang === "en" ? "Education" : "教育"}
             </p>
             <div className="space-y-2">
@@ -137,7 +137,7 @@ export function Hero() {
                       </span>
                     )}
                   </p>
-                  <p className="mono text-xs text-[var(--gray-500)]">{edu.period}</p>
+                  <p className="mono text-xs text-[var(--gray-600)]">{edu.period}</p>
                 </div>
               ))}
             </div>
@@ -145,7 +145,7 @@ export function Hero() {
 
           {/* Timeline */}
           <div className="mb-6">
-            <p className="mono text-xs text-[var(--gray-500)] mb-3 uppercase tracking-wider">
+            <p className="mono text-xs text-[var(--gray-600)] mb-3 uppercase tracking-wider">
               {lang === "en" ? "Previously" : "之前"}
             </p>
             <div>
@@ -169,7 +169,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <p className="mono text-xs text-[var(--gray-500)] mb-2 uppercase tracking-wider">
+            <p className="mono text-xs text-[var(--gray-600)] mb-2 uppercase tracking-wider">
               {lang === "en" ? "Contact" : "联系"}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -220,7 +220,7 @@ export function Hero() {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-[var(--gray-500)] text-sm"
+          className="text-[var(--gray-600)] text-sm"
         >
           ↓
         </motion.div>

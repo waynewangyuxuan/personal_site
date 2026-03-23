@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useI18n, LanguageToggle } from "@/lib/i18n";
+import { ThemeToggle } from "@/lib/theme";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -80,6 +81,9 @@ export function Header() {
           <div className="border-l border-[var(--border)] pl-6">
             <LanguageToggle />
           </div>
+
+          {/* Theme Toggle */}
+          <ThemeToggle />
         </div>
       </nav>
     </motion.header>

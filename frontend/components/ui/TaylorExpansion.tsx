@@ -117,7 +117,7 @@ export function TaylorExpansion() {
           <text
             x="350"
             y="85"
-            fill="var(--gray-500)"
+            fill="var(--gray-600)"
             fontSize="10"
             fontFamily="var(--font-mono)"
           >

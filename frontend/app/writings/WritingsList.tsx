@@ -65,7 +65,7 @@ export function WritingsList({ writings }: { writings: WritingMeta[] }) {
 
                     {/* Content */}
                     <div className="flex-1 min-w-0">
-                      <p className="mono text-xs text-[var(--gray-500)] mb-2">
+                      <p className="mono text-xs text-[var(--gray-600)] mb-2">
                         {w.date}
                       </p>
                       <h2
