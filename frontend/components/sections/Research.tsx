@@ -12,17 +12,17 @@ const publications = [
   {
     id: "01",
     title: "Temporal Leakage in Search-Engine Date-Filtered Web Retrieval",
-    venue: "arXiv (pending for ACL 2026)",
+    venue: "ACL 2026",
     stat: "71% of date-filtered queries return post-cutoff data",
-    authors: "Yuxuan Wang et al.",
-    link: null,
+    authors: "Ali El Lahib, Ying-Jieh Xia, Zehan Li, Yuxuan Wang, Xinyu Pi",
+    link: "https://arxiv.org/abs/2602.00758",
   },
   {
     id: "02",
-    title: "Simulated Ignorance Fails",
+    title: "Simulated Ignorance Fails: A Systematic Study of LLM Behaviors on Forecasting Problems Before Model Knowledge Cutoff",
     venue: "arXiv (pending for IJCAI 2026)",
     stat: "52% performance gap when simulating ignorance",
-    authors: "Yuxuan Wang et al.",
+    authors: "Zehan Li, Yuxuan Wang, Ali El Lahib, Ying-Jieh Xia, Xinyu Pi",
     link: "https://arxiv.org/abs/2601.13717",
   },
 ];
@@ -97,7 +97,9 @@ function PublicationCard({ paper, index, lang }: { paper: typeof publications[0]
           animate={{ x: isHovered ? 4 : 0 }}
           transition={{ duration: durations.fast, delay: 0.04 }}
         >
-          {paper.venue} · {paper.authors}
+          {paper.venue} · {paper.authors.split(/(Yuxuan Wang)/).map((part, i) =>
+            part === "Yuxuan Wang" ? <strong key={i} className="font-semibold">{part}</strong> : part
+          )}
         </motion.p>
       </div>
     </motion.article>
