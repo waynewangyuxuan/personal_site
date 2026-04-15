@@ -63,7 +63,7 @@ const projectsData = [
       en: "Keep teams aligned when everyone moves faster",
       zh: "当每个人都更快时，让团队保持同步",
     },
-    tech: ["Context Engineering", "Living Spec", "Pre-merge Sync"],
+    tech: ["Context Engineering", "Living Spec", "Pre-merge Sync", "Knowledge Graph"],
     url: "https://vibehub.icu/",
     previewImage: "/previews/vibehub.png",
   },
