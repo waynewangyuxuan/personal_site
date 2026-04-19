@@ -1,24 +1,45 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
-import type { WritingFrontmatter } from "@/lib/writings";
+import { cn } from "@/lib/utils";
+import type { Lang } from "@/lib/writings";
+
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-export function ArticleContent({
-  frontmatter,
-  htmlContent,
-}: {
-  frontmatter: WritingFrontmatter;
+export interface RenderedVariant {
+  title: string;
+  summary: string;
+  date: string;
+  tags: string[];
+  cover?: string;
   htmlContent: string;
+}
+
+export function ArticleContent({
+  variants,
+}: {
+  variants: Partial<Record<Lang, RenderedVariant>>;
 }) {
-  const { lang } = useI18n();
-  const title =
-    lang === "zh" && frontmatter.title_zh
-      ? frontmatter.title_zh
-      : frontmatter.title;
+  const { lang: siteLang } = useI18n();
+  const available = (Object.keys(variants) as Lang[]).filter((l) => variants[l]);
+  const pickInitial = (pref: Lang): Lang =>
+    variants[pref] ? pref : available[0];
+
+  const [lang, setLang] = useState<Lang>(() => pickInitial(siteLang));
+
+  useEffect(() => {
+    setLang(pickInitial(siteLang));
+  }, [siteLang]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const variant = variants[lang];
+  if (!variant) return null;
+
+  const useCn = lang === "zh";
+  const hasBoth = available.length > 1;
 
   return (
     <article className="page-container py-24">
@@ -33,30 +54,54 @@ export function ArticleContent({
           href="/writings/"
           className="mono text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
         >
-          ← {lang === "en" ? "Back" : "返回"}
+          ← {siteLang === "en" ? "Back" : "返回"}
         </Link>
       </motion.div>
 
       {/* Header */}
       <header className="mb-12 content-width">
-        <motion.p
-          className="mono text-xs text-[var(--gray-600)] mb-4"
+        <motion.div
+          className="flex items-center justify-between gap-4 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.1, ease }}
         >
-          {frontmatter.date}
-        </motion.p>
+          <p className="mono text-xs text-[var(--gray-600)]">{variant.date}</p>
+          {hasBoth && (
+            <div
+              className="flex items-center text-xs mono"
+              role="group"
+              aria-label="Language"
+            >
+              {(["en", "zh"] as Lang[]).map((l, i) => (
+                <button
+                  key={l}
+                  onClick={() => setLang(l)}
+                  disabled={!variants[l]}
+                  className={cn(
+                    "px-2 py-0.5 transition-colors",
+                    i === 0 && "border-r border-[var(--border)]",
+                    lang === l
+                      ? "text-[var(--foreground)]"
+                      : "text-[var(--muted)] hover:text-[var(--foreground)]",
+                    !variants[l] && "opacity-40 cursor-not-allowed"
+                  )}
+                >
+                  {l === "en" ? "EN" : "中"}
+                </button>
+              ))}
+            </div>
+          )}
+        </motion.div>
         <motion.h1
+          key={`title-${lang}`}
           className="mb-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease }}
-          style={
-            lang === "zh" ? { fontFamily: "var(--font-cn-display)" } : {}
-          }
+          style={useCn ? { fontFamily: "var(--font-cn-display)" } : {}}
         >
-          {title}
+          {variant.title}
         </motion.h1>
         <motion.div
           className="flex flex-wrap gap-2"
@@ -64,7 +109,7 @@ export function ArticleContent({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.25, ease }}
         >
-          {frontmatter.tags.map((tag) => (
+          {variant.tags.map((tag) => (
             <span
               key={tag}
               className="mono text-xs px-3 py-1 border border-[var(--gray-200)] text-[var(--muted)] rounded-full"
@@ -76,7 +121,7 @@ export function ArticleContent({
       </header>
 
       {/* Cover */}
-      {frontmatter.cover && (
+      {variant.cover && (
         <motion.div
           className="mb-12 rounded-lg overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
@@ -85,7 +130,7 @@ export function ArticleContent({
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={frontmatter.cover}
+            src={variant.cover}
             alt=""
             className="w-full max-h-[480px] object-cover"
           />
@@ -94,11 +139,13 @@ export function ArticleContent({
 
       {/* Content */}
       <motion.div
+        key={`body-${lang}`}
         className="prose content-width"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.35, ease }}
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
+        style={useCn ? { fontFamily: "var(--font-cn-body)" } : {}}
+        dangerouslySetInnerHTML={{ __html: variant.htmlContent }}
       />
     </article>
   );
