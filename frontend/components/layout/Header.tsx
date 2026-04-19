@@ -14,7 +14,6 @@ export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const navItems = [
-    { href: "/", label: t("nav.home") },
     { href: "/projects", label: t("nav.projects") },
     { href: "/research", label: t("nav.research") },
     { href: "/writings", label: t("nav.writing") },
@@ -58,8 +57,8 @@ export function Header() {
         </Link>
 
         {/* Nav Items + Language Toggle */}
-        <div className="flex items-center gap-8">
-          <ul className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-8">
+          <ul className="flex items-center gap-3 sm:gap-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
@@ -78,7 +77,7 @@ export function Header() {
           </ul>
 
           {/* Language Toggle */}
-          <div className="border-l border-[var(--border)] pl-6">
+          <div className="border-l border-[var(--border)] pl-3 sm:pl-6">
             <LanguageToggle />
           </div>
 
