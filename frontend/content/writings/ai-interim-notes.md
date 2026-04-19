@@ -9,7 +9,7 @@ tags: ["AI", "自然语言编程", "开源", "随笔"]
 
 这个月，我一直在持续性的探索一个课题“自然语言编程”(Natural Language Programming)，简单来说也就是，我像写代码一样，写我的markdown，我的markdown里有stblib，有明确的调用和依赖关系，有严格的type, 有预先指定的通讯协议，甚至还有fork()/wait()这种逻辑（当然这里的fork() 主要是spawn agent而不是物理上的thread)，只不过所有东西，都是在自然语言里。
 
-这些逻辑，是本来我们需要用代码实现的部分；而让这些逻辑运行，本来是compiler/intepreter/OS/硬件[GPU]的工作，现在我们的runtime变成了LLM/硬件[GPU]。这里我要promote一下我个人的理念，未来就是“Knowledge as a service, LLM as the runtime”，在这个理念下，互联网上最应该被重视的开源内容，其实是像gstack (https://github.com/garrytan/gstack) 这样可以运行的高价值知识。
+这些逻辑，是本来我们需要用代码实现的部分；而让这些逻辑运行，本来是compiler/intepreter/OS/硬件[GPU]的工作，现在我们的runtime变成了LLM/硬件[GPU]。这里我要promote一下我个人的理念，未来就是“Knowledge as a service, LLM as the runtime”，在这个理念下，互联网上最应该被重视的开源内容，其实是像 [gstack](https://github.com/garrytan/gstack) 这样可以运行的高价值知识。
 
 优秀的传统开源项目，依然很有价值，但是它的价值点， 在不知不觉中，也发生了改变。以前，一个优秀的开源项目，比如说，开源的用户系统，它的核心价值在于，它极大程度的节约了我作为开发者的工作量，无论是开箱即用还是我在上面小改，比我从头开始写要轻松很多。那现在的话，这种不需要重复造轮子的价值依然存在，但是因为代码被生产的时间和人力程度实在是太低，所以这部分价值被压缩了很多；而与之相对的，被编码成代码的知识，比如说有趣的decorator使用，高并发在某个垂直场景下的特殊解决方案，或者就general一点，claude code里的重要工程实践，这种东西的价值点就提升了很多。
 
@@ -19,7 +19,7 @@ tags: ["AI", "自然语言编程", "开源", "随笔"]
 
 我想在这里说一个事情，就是，我说的用AI从代码中提取知识，真的只是说AI能够很高效的从代码库中提取知识，而你作为人类，如何处理这个知识，是你去真正学习它，还是把这个知识当作一个package一样，直接再让AI去load这个知识，这就是你的选择了。我一般不会去用AI 代替我进行任何我有可能学到东西的环节——这是一句，我几个月一直思考人和AI之间应该如何进行可持续性合作后实践出的经验的高度总结，我一定会在未来写个文章抛砖引玉，和大家讨论一下这个事情的。
 
-哦，说到这里，其实我个人用来实践这一套“Knowledge as a service, LLM as the runtime”开发的第一个产出，就是一个用来从代码库中蒸馏知识的claude skill。这个skill 的链接在此【https://github.com/VW-ai/ShadowRepo-Skill.git】，请大家多多使用，多多捧场。
+哦，说到这里，其实我个人用来实践这一套“Knowledge as a service, LLM as the runtime”开发的第一个产出，就是一个用来从代码库中蒸馏知识的claude skill。这个skill 的链接在此（[ShadowRepo-Skill](https://github.com/VW-ai/ShadowRepo-Skill)），请大家多多使用，多多捧场。
 
 在这个skil的组织上，我贯彻了和代码开发一样的标准，逻辑要解耦，边界条件要清晰。我在开发这个skill的时候，感觉vibe markdown和我去vibe code，是有一模一样的脑力活动的，都是在进行，缜密的系统设计。
 
@@ -108,6 +108,6 @@ tags: ["AI", "自然语言编程", "开源", "随笔"]
 
 这里有一个quick N vs NP 的analogy，你去找一个好的解，可能是很难的，但是你去验证一个解是不是好的，往往是容易的。也就是，有时候，验证一个解需要的能力是远低于去找一个好的解的，但是验证这个事情会给你一个illusion，让你以为自己有能力去找一个好的解，但你其实没有培养到在这个任务里找一个好的解的能力。往往遇到这种任务，这时候就需要认真想，这个事情，从可持续培养大脑的角度来说，我们应该如何和AI合作。
 
-最后，我想说，过去一个周我一直在做一个coding agents的系统(https://github.com/waynewangyuxuan/Robin)，我的理念是，我们和AI的协作终极模式应该是人类深度思考和AI深度干活的无限循环，你来我往的AI对话可以是人类深度思考的一个环，或者一种辅助工具，但是在真正去执行的时候，不应该是这种你来我往的模式。这个世界上没有leader是通过一步一步指导属下来完成工作的。目前这个系统还挺成功，它已经干了3个小时活了，还在继续，很期待它的deliverable。
+最后，我想说，过去一个周我一直在做一个coding agents的系统（[Robin](https://github.com/waynewangyuxuan/Robin)），我的理念是，我们和AI的协作终极模式应该是人类深度思考和AI深度干活的无限循环，你来我往的AI对话可以是人类深度思考的一个环，或者一种辅助工具，但是在真正去执行的时候，不应该是这种你来我往的模式。这个世界上没有leader是通过一步一步指导属下来完成工作的。目前这个系统还挺成功，它已经干了3个小时活了，还在继续，很期待它的deliverable。
 
 ![robin执行的一个log，大概感受一下](/writings/robin-processed.png)

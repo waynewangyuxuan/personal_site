@@ -16,8 +16,8 @@ const darkBg: Record<string, string> = {
   "/": "#1a1918",
   "/projects": "#23201c",
   "/research": "#1c1f25",
-  "/writing": "#21201c",
-  "/writings": "#21201c",
+  "/writing": "#2d2a24",
+  "/writings": "#2d2a24",
 };
 
 function normalizePath(p: string) {
