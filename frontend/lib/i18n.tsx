@@ -22,8 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.name": "Wayne Wang",
-    "hero.line1": "Building systems that think.",
-    "hero.line2": "Questioning systems that predict.",
+    "hero.line1": "Be Water.",
     "hero.signature": "Living between grief and nothing",
 
     // Projects
@@ -70,8 +69,7 @@ My work focuses on mental models—structured ways of understanding that could g
 
     // Hero
     "hero.name": "王宇轩",
-    "hero.line1": "构建会思考的系统",
-    "hero.line2": "质疑会预测的系统",
+    "hero.line1": "上善若水",
     "hero.signature": "Living between grief and nothing",
 
     // Projects
