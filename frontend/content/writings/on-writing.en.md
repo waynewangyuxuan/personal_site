@@ -5,7 +5,7 @@ date: "2026-04-20"
 tags: ["Writing", "AI", "Essays", "Human-AI Collaboration"]
 ---
 
-Writing is genuinely important cognitive training — fiction, reports, essays, poetry, anything where you put real weight on output quality and quantity. The *point* of writing isn't cognitive training, of course; it's a medium for persisting thought and making it public. The training is just means to that end. But now, after LLMs have taken over too much of our thinking, the training — or even just the experience — that writing gives you has become more important, and more uniquely valuable, than ever.
+Writing is a genuinely important cognitive training — fiction, reports, essays, poetry, anything where you put real weight on output quality and quantity. The point of writing isn't cognitive training, of course; it's a medium for persisting thought and making it public. The training is just a means to that end. But now, after LLMs have taken over too much of our writing tasks, the training — or even just the experience — that writing gives you has become more important, and more uniquely valuable, than ever.
 
 In undergrad, writing was instinct. Especially literary writing. I could sit down and bang out a 10-20k-character short story in an afternoon, no pauses. Poetic images spilled out of everything — objects, people, emotion — crossing time and physical constraints, connecting, shifting. Maybe half the time there was a poem in my head I could write, and I just couldn't be bothered to type it; only the very best ones got captured.
 
