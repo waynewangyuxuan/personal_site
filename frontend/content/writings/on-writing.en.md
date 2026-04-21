@@ -1,0 +1,20 @@
+---
+title: "Writing and Sustainable Human/AI Collaboration"
+summary: "Writing — the most important piece of sustainable human/AI collaboration."
+date: "2026-04-20"
+tags: ["Writing", "AI", "Essays", "Human-AI Collaboration"]
+---
+
+Writing is genuinely important cognitive training — fiction, reports, essays, poetry, anything where you put real weight on output quality and quantity. The *point* of writing isn't cognitive training, of course; it's a medium for persisting thought and making it public. The training is just means to that end. But now, after LLMs have taken over too much of our thinking, the training — or even just the experience — that writing gives you has become more important, and more uniquely valuable, than ever.
+
+In undergrad, writing was instinct. Especially literary writing. I could sit down and bang out a 10-20k-character short story in an afternoon, no pauses. Poetic images spilled out of everything — objects, people, emotion — crossing time and physical constraints, connecting, shifting. Maybe half the time there was a poem in my head I could write, and I just couldn't be bothered to type it; only the very best ones got captured.
+
+Essays too — my own love life, basketball write-ups, flat-out complaints — whatever I wanted to say, the words showed up on their own, unobstructed. No thinking about how the next sentence should be designed after this one, whether this paragraph was drifting off-topic, whether I could phrase something better. None of that. Always in one breath. A little smug to say, but it felt effortless. Ha.
+
+Over the last year and change, my writing frequency dropped, and dropped, and dropped — a tangled set of reasons, but the endpoint was: basically never. And most of my work writing got covered by LLMs. My "writing activity" became one or two prompts to kick off an AI interaction. Sometime in January I sat down to write a basketball piece on Devin Booker. The first two or three paragraphs — I rewrote them over and over, none of them looked right. The mental friction was like a guy with 800-degree myopia climbing Mount Hua without his glasses: every step, look left, look right, feel the rock, pat the grass, then maybe continue. On one hand I was lamenting — I used to be a little soldier in the world of letters; I used to daydream about becoming a somewhat-serious writer; and now in my twenties I'm illiterate again, below elementary-school level. On the other hand I realized: if this keeps going, my brain is cooked. By over-outsourcing writing to LLMs, I'd accidentally outsourced a lot of the thinking itself. Brains are use-it-or-lose-it. Some abilities I'm fine losing — cooking, jump-shooting, fine. But writing, or rather the deep thinking, self-expression, synthesis, and critical reflection that *sits behind* writing — those I cannot afford to lose. If using LLMs ends with me getting dumber, I'd rather not use them.
+
+These past two months I've forced myself to write, and at the same time I've been strict about monitoring my own AI interactions — making sure I don't skip any chance to train my brain. In practice that means: AI can do the work, but if it's *new* work, I have to at least learn how to do it first, and *then* have AI do it for me. I call this: sustainable human/AI collaboration.
+
+Writing, I think, is the most important piece of that sustainable collaboration. If you ask me what the second piece is — reading. I was going to say "learning itself," but there are many ways to learn, and reading is the one that upgrades your *language ability* while also giving you knowledge. Wait — isn't this exactly like a large model? On one side we train the model toward better output (writing); on the other side we pipe it input (data). And reading is probably the one input type that most directly lifts general output quality. A human really is just an LLM.
+
+I'll stop here — I need to go back to reviewing CSE 200 Complexity. No exam. Just review. If you've taken the class you get it: every lecture demands a review after.
