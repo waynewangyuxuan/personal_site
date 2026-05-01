@@ -20,7 +20,7 @@ const publications = [
   {
     id: "02",
     title: "Simulated Ignorance Fails: A Systematic Study of LLM Behaviors on Forecasting Problems Before Model Knowledge Cutoff",
-    venue: "arXiv (pending for IJCAI 2026)",
+    venue: "IJCAI 2026",
     stat: "52% performance gap when simulating ignorance",
     authors: "Zehan Li, Yuxuan Wang, Ali El Lahib, Ying-Jieh Xia, Xinyu Pi",
     link: "https://arxiv.org/abs/2601.13717",
