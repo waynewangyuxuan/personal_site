@@ -109,6 +109,7 @@ interface TimelineItemProps {
   index: number;
   isLast?: boolean;
   defaultExpanded?: boolean;
+  badge?: string;
 }
 
 export function TimelineItem({
@@ -120,6 +121,7 @@ export function TimelineItem({
   index,
   isLast = false,
   defaultExpanded = false,
+  badge,
 }: TimelineItemProps) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
@@ -143,7 +145,11 @@ export function TimelineItem({
         </motion.div>
       ) : (
         <motion.div
-          className="absolute left-0 top-[6px] w-2.5 h-2.5 rounded-full border-2 border-[var(--gray-300)] bg-[var(--background)] group-hover:border-[var(--foreground)] transition-colors z-10"
+          className={
+            badge
+              ? "absolute left-0 top-[6px] w-2.5 h-2.5 rounded-full bg-[var(--foreground)] border-2 border-[var(--foreground)] z-10"
+              : "absolute left-0 top-[6px] w-2.5 h-2.5 rounded-full border-2 border-[var(--gray-300)] bg-[var(--background)] group-hover:border-[var(--foreground)] transition-colors z-10"
+          }
           animate={{
             scale: isExpanded ? 1.2 : 1,
             borderColor: isExpanded ? "var(--foreground)" : undefined,
@@ -152,11 +158,21 @@ export function TimelineItem({
         />
       )}
 
-      {/* Pulse ring on hover */}
+      {/* Pulse ring — always on for the current role, otherwise on hover */}
       <motion.div
-        className="absolute left-[-3px] top-[3px] w-4 h-4 rounded-full border border-[var(--gray-200)] opacity-0 group-hover:opacity-100"
-        animate={isExpanded ? { scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] } : {}}
-        transition={{ duration: 1.5, repeat: isExpanded ? Infinity : 0 }}
+        className={
+          badge
+            ? "absolute left-[-3px] top-[3px] w-4 h-4 rounded-full border border-[var(--foreground)]"
+            : "absolute left-[-3px] top-[3px] w-4 h-4 rounded-full border border-[var(--gray-200)] opacity-0 group-hover:opacity-100"
+        }
+        animate={
+          badge
+            ? { scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }
+            : isExpanded
+            ? { scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }
+            : {}
+        }
+        transition={{ duration: 1.8, repeat: badge || isExpanded ? Infinity : 0 }}
       />
 
       {/* Timeline line */}
@@ -174,10 +190,15 @@ export function TimelineItem({
         {/* Header row */}
         <div className="flex items-baseline justify-between gap-4 mb-1">
           <motion.h4
-            className="text-base font-medium group-hover:text-[var(--foreground)] transition-colors"
+            className="text-base font-medium group-hover:text-[var(--foreground)] transition-colors flex items-center gap-2"
             whileHover={{ x: 2 }}
           >
             {title}
+            {badge && (
+              <span className="mono text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-[var(--foreground)] text-[var(--background)] font-normal">
+                {badge}
+              </span>
+            )}
           </motion.h4>
           <span className="mono text-xs text-[var(--gray-600)] shrink-0">
             {period}

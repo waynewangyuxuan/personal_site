@@ -8,6 +8,19 @@ import { education } from "@/lib/content";
 const info = {
   timeline: [
     {
+      period: "Jun 2026 - Present",
+      current: true,
+      company: { en: "ByteDance · TikTok Ads", zh: "字节跳动 · TikTok Ads" },
+      role: {
+        en: "Data Engineering Intern · San Jose",
+        zh: "数据工程实习 · San Jose",
+      },
+      description: {
+        en: "Building the data plumbing behind TikTok's ad engine",
+        zh: "为 TikTok 广告引擎铺设数据管道",
+      },
+    },
+    {
       period: "Jun 2025 - Sep 2025",
       company: { en: "ByteDance", zh: "字节跳动" },
       role: { en: "Software Engineer Intern", zh: "软件工程实习" },
@@ -137,7 +150,7 @@ export function Hero() {
           {/* Timeline */}
           <div className="mb-6">
             <p className="mono text-xs text-[var(--gray-600)] mb-3 uppercase tracking-wider">
-              {lang === "en" ? "Previously" : "之前"}
+              {lang === "en" ? "Experience" : "经历"}
             </p>
             <div>
               {info.timeline.map((item, index) => (
@@ -147,6 +160,13 @@ export function Hero() {
                   title={item.company[lang]}
                   subtitle={item.role[lang]}
                   description={item.description[lang]}
+                  badge={
+                    "current" in item && item.current
+                      ? lang === "en"
+                        ? "Now"
+                        : "现在"
+                      : undefined
+                  }
                   index={index}
                   isLast={index === info.timeline.length - 1}
                 />
