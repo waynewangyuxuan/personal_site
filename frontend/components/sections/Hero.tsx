@@ -12,12 +12,12 @@ const info = {
       current: true,
       company: { en: "ByteDance · TikTok Ads", zh: "字节跳动 · TikTok Ads" },
       role: {
-        en: "Data Engineering Intern · San Jose",
-        zh: "数据工程实习 · San Jose",
+        en: "AI Agent Engineer · San Jose",
+        zh: "AI Agent 工程师 · San Jose",
       },
       description: {
-        en: "Building the data plumbing behind TikTok's ad engine",
-        zh: "为 TikTok 广告引擎铺设数据管道",
+        en: "Agents that read, route, and resolve support tickets",
+        zh: "让 agent 读懂工单、分派工单、解决工单",
       },
     },
     {
