@@ -1,203 +1,164 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { cn } from "@/lib/utils";
 
-// Project data with bilingual content
-const projectsData = [
+type Lang = "en" | "zh";
+
+interface ProjectImage {
+  src: string;
+  alt: string;
+  label: Record<Lang, string>;
+}
+
+interface Project {
+  slug: string;
+  name: string;
+  line: Record<Lang, string>;
+  url: string;
+  place: string;
+  images?: ProjectImage[];
+}
+
+const projectsData: Project[] = [
   {
-    slug: "inxtone",
-    name: "Inxtone 砚台",
-    tagline: {
-      en: "AI-Native Storytelling",
-      zh: "让AI学会讲故事",
+    slug: "peel",
+    name: "Peel",
+    line: {
+      en: "Peel a thought off the current Codex conversation.",
+      zh: "从当前的 Codex 对话里，剥下一支想法。",
     },
-    description: {
-      en: "Turns AI from a text generator into a story architect.",
-      zh: "让 AI 从文字生成器变成故事架构师。",
-    },
-    tech: ["Rust", "React", "Gemini API"],
-    url: "https://inxtone.com",
-    previewImage: "/previews/inxtone.png",
+    url: "https://github.com/waynewangyuxuan/Peel",
+    place: "GitHub",
+    images: [
+      {
+        src: "/projects/peel-overview.png",
+        alt: "Peel Overview, the branches of one conversation",
+        label: { en: "Overview · the branches", zh: "Overview · 分支" },
+      },
+      {
+        src: "/projects/peel-focus.png",
+        alt: "Peel Focus, the current Codex conversation",
+        label: { en: "Focus · the conversation", zh: "Focus · 对话" },
+      },
+    ],
   },
   {
-    slug: "graphex",
-    name: "Graphex",
-    tagline: {
-      en: "AI Learning Canvas",
-      zh: "AI 学习画布",
+    slug: "nomi",
+    name: "Nomi",
+    line: {
+      en: "Capture anything, at any time.",
+      zh: "随时捕捉任何东西。",
     },
-    description: {
-      en: "transforms documents into interactive knowledge graphs for active learning",
-      zh: "将文档转化为交互式知识图谱，实现主动学习",
-    },
-    tech: ["Python", "Multi-Agent", "Knowledge-Graph"],
-    url: "https://graphex.app",
-    previewImage: "/previews/graphex.png",
-  },
-  {
-    slug: "notate",
-    name: "Notate",
-    tagline: {
-      en: "Knowledge Layer",
-      zh: "知识层",
-    },
-    description: {
-      en: "Quick capture, never miss another idea",
-      zh: "桌面速记，再也不错过任何一个想法",
-    },
-    tech: ["Rust", "React", "SQLite", "LanceDB"],
-    url: "https://vw-ai.github.io/Notate.ai/",
-    previewImage: "/previews/notate.png",
+    url: "https://getnomi.net",
+    place: "getnomi.net",
+    images: [
+      {
+        src: "/projects/nomi.png",
+        alt: "Nomi window with quick capture, the next event, and a running agent",
+        label: { en: "Nomi", zh: "Nomi" },
+      },
+    ],
   },
   {
     slug: "vibehub",
     name: "VibeHub",
-    tagline: {
-      en: "Team Collaboration OS",
-      zh: "团队协作系统",
+    line: {
+      en: "Keep teams aligned when everyone moves faster.",
+      zh: "当每个人都更快时，让团队保持同步。",
     },
-    description: {
-      en: "Keep teams aligned when everyone moves faster",
-      zh: "当每个人都更快时，让团队保持同步",
-    },
-    tech: ["Context Engineering", "Living Spec", "Pre-merge Sync", "Knowledge Graph"],
-    url: "https://vibehub.icu/",
-    previewImage: "/previews/vibehub.png",
+    url: "https://vibehub.team",
+    place: "vibehub.team",
+    images: [
+      {
+        src: "/projects/vibehub.png",
+        alt: "VibeHub Ticket Workbench, a graph of tickets and the one that is ready",
+        label: { en: "VibeHub", zh: "VibeHub" },
+      },
+    ],
   },
 ];
 
-const durations = {
-  fast: 0.2,
-  normal: 0.4,
-  slow: 0.6,
-};
+const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-const easings = {
-  smooth: [0.16, 1, 0.3, 1] as [number, number, number, number],
-};
+function ProjectImages({ images, lang }: { images: ProjectImage[]; lang: Lang }) {
+  const [active, setActive] = useState(0);
+  const [open, setOpen] = useState(false);
+  const image = images[active];
 
-interface GalleryCardProps {
-  project: (typeof projectsData)[0];
-  index: number;
-  lang: "en" | "zh";
-}
-
-function GalleryCard({ project, index, lang }: GalleryCardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   return (
-    <motion.a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block p-5 rounded-2xl border border-[var(--gray-200)] bg-[var(--background)] hover:border-[var(--gray-300)] hover:bg-[var(--gray-50)] transition-colors duration-300"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: durations.slow, delay: 0.1 * index, ease: easings.smooth }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* Browser Preview */}
-      <motion.div
-        className="relative bg-[var(--gray-100)] rounded-xl overflow-hidden mb-4"
-        animate={{
-          y: isHovered ? -2 : 0,
-        }}
-        transition={{ duration: durations.normal }}
-      >
-        {/* Browser Title Bar */}
-        <div className="flex items-center gap-2 px-3 py-2 bg-[var(--gray-200)] border-b border-[var(--gray-300)]">
-          <div className="flex gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#ff5f57] opacity-60 group-hover:opacity-100 transition-opacity" />
-            <span className="w-2 h-2 rounded-full bg-[#febc2e] opacity-60 group-hover:opacity-100 transition-opacity" />
-            <span className="w-2 h-2 rounded-full bg-[#28c840] opacity-60 group-hover:opacity-100 transition-opacity" />
-          </div>
-          <div className="flex-1 mx-2">
-            <div className="bg-[var(--background)] rounded px-2 py-0.5 text-[10px] text-[var(--muted)] mono truncate">
-              {new URL(project.url).hostname}
-            </div>
-          </div>
-        </div>
-
-        {/* Preview Image - Grayscale by default, color on hover */}
-        <div className="relative aspect-[16/10] overflow-hidden">
-          {project.previewImage ? (
-            <motion.img
-              src={project.previewImage}
-              alt={`${project.name} preview`}
-              className="w-full h-full object-cover object-top transition-all duration-500"
-              style={{
-                filter: isHovered ? "grayscale(0%) brightness(1)" : "grayscale(80%) brightness(0.95)",
-              }}
-              animate={{ scale: isHovered ? 1.02 : 1 }}
-              transition={{ duration: durations.slow }}
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-[var(--gray-100)] to-[var(--gray-200)] flex items-center justify-center">
-              <span className="text-[var(--muted)] text-sm">{project.name}</span>
-            </div>
-          )}
-
-          {/* Subtle hover indicator */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-[var(--foreground)]/20 to-transparent flex items-end justify-center pb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: durations.fast }}
-          >
-            <motion.div
-              className="text-[var(--background)] flex items-center gap-1.5 bg-[var(--foreground)]/80 px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm"
-              animate={{ y: isHovered ? 0 : 8, opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: durations.fast, delay: 0.05 }}
+    <div className="mt-6">
+      {images.length > 1 && (
+        <div className="flex flex-wrap gap-x-5 gap-y-1 mb-3">
+          {images.map((item, index) => (
+            <button
+              key={item.src}
+              type="button"
+              aria-pressed={index === active}
+              onClick={() => setActive(index)}
+              className={cn(
+                "text-sm transition-colors",
+                index === active
+                  ? "text-[var(--foreground)] underline underline-offset-4 decoration-1"
+                  : "text-[var(--gray-600)] hover:text-[var(--foreground)]"
+              )}
+              style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
             >
-              View Project
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                <polyline points="15 3 21 3 21 9"/>
-                <line x1="10" y1="14" x2="21" y2="3"/>
-              </svg>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Project Info */}
-      <div>
-        <motion.h3
-          className="text-lg font-bold mb-1 text-[var(--foreground)]"
-          animate={{ x: isHovered ? 2 : 0 }}
-          transition={{ duration: durations.fast }}
-        >
-          {project.name}
-        </motion.h3>
-        <motion.p
-          className="text-sm text-[var(--muted)] mb-3 leading-relaxed"
-          style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
-          animate={{ x: isHovered ? 2 : 0 }}
-          transition={{ duration: durations.fast, delay: 0.02 }}
-        >
-          {project.description[lang]}
-        </motion.p>
-        <motion.div
-          className="flex flex-wrap gap-1.5"
-          animate={{ x: isHovered ? 2 : 0 }}
-          transition={{ duration: durations.fast, delay: 0.04 }}
-        >
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="mono text-[10px] px-2 py-1 bg-[var(--foreground)] text-[var(--background)] rounded-md font-medium"
-            >
-              {t}
-            </span>
+              {item.label[lang]}
+            </button>
           ))}
-        </motion.div>
-      </div>
-    </motion.a>
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="block w-full cursor-zoom-in"
+        aria-label={lang === "en" ? `Enlarge ${image.label.en}` : `放大${image.label.zh}`}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="w-full rounded-lg border border-[var(--border)]"
+        />
+      </button>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center p-4 md:p-12"
+          style={{ backgroundColor: "var(--paper)" }}
+          onClick={() => setOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={image.label[lang]}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="max-h-full max-w-full rounded-lg border border-[var(--border)] cursor-zoom-out"
+          />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -206,20 +167,43 @@ export function Projects() {
 
   return (
     <section id="work" className="section page-container">
-      {/* Section label */}
       <ScrollReveal>
         <p className="section-label mb-12">{t("projects.title")}</p>
       </ScrollReveal>
 
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+      <div className="max-w-[var(--content-max-width)]">
         {projectsData.map((project, index) => (
-          <GalleryCard
+          <motion.article
             key={project.slug}
-            project={project}
-            index={index}
-            lang={lang}
-          />
+            className="py-8 border-t border-[var(--border)] last:border-b"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.05 * index, ease }}
+          >
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block"
+            >
+              <div className="flex items-baseline justify-between gap-6 mb-2">
+                <h3 className="text-2xl font-medium tracking-tight group-hover:opacity-70 transition-opacity">
+                  {project.name}
+                </h3>
+                <span className="mono text-xs text-[var(--gray-600)] shrink-0">
+                  {project.place} ↗
+                </span>
+              </div>
+              <p
+                className="text-base text-[var(--muted)] leading-relaxed max-w-xl"
+                style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
+              >
+                {project.line[lang]}
+              </p>
+            </a>
+            {project.images && <ProjectImages images={project.images} lang={lang} />}
+          </motion.article>
         ))}
       </div>
     </section>

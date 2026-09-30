@@ -7,7 +7,7 @@ export const personal = {
   tagline: "Building tools for the post-AI world.",
   email: "w.wayne.vip@gmail.com",
   current: "MS Computer Science @ UCSD",
-  previous: "ByteDance, NYU Research",
+  previous: "TikTok Ads, NYU Research",
 };
 
 export const research = {
@@ -53,23 +53,13 @@ export const research = {
 
 export const projects = [
   {
-    slug: "graphex",
-    name: "Graphex",
-    oneLiner: "AI-powered learning canvas for document understanding",
-    problem: "People drown in AI-processed documents without truly learning from them.",
-    solution: "Interactive canvas that transforms documents into explorable knowledge graphs.",
-    tech: ["React", "TypeScript", "Canvas API", "OpenAI"],
-    url: "https://graphex.app",
-    featured: true,
-  },
-  {
-    slug: "notate",
-    name: "Notate",
-    oneLiner: "Knowledge layer that captures AI, retrieves for humans",
-    problem: "AI captures information faster than humans can organize it.",
-    solution: "Automatic knowledge capture with human-friendly retrieval interface.",
-    tech: ["React", "TypeScript", "Vector DB"],
-    url: "https://vw-ai.github.io/Notate.ai/",
+    slug: "nomi",
+    name: "Nomi",
+    oneLiner: "Capture anything, at any time.",
+    problem: "Ideas, links, and notes slip away between apps.",
+    solution: "One place to capture anything, then let it sort itself.",
+    tech: ["macOS"],
+    url: "https://getnomi.net",
     featured: true,
   },
   {
@@ -79,7 +69,7 @@ export const projects = [
     problem: "AI makes individuals 26% faster but teams collectively slower.",
     solution: "Coordination layer that keeps teams aligned when everyone moves faster.",
     tech: ["Next.js", "TypeScript", "Real-time sync"],
-    url: "https://vibehub.icu/",
+    url: "https://vibehub.team",
     featured: true,
   },
   {
@@ -93,20 +83,27 @@ export const projects = [
     featured: false,
   },
   {
-    slug: "inxtone",
-    name: "Inxtone",
-    oneLiner: "AI fiction writing CLI with memory and consistency",
-    problem: "AI-generated fiction loses consistency over long narratives.",
-    solution: "CLI tool that maintains character, plot, and style memory.",
-    tech: ["Rust", "Gemini API", "CLI"],
-    url: "https://inxtone.com",
-    featured: false,
+    slug: "peel",
+    name: "Peel",
+    oneLiner: "Peel a thought off the current Codex conversation.",
+    problem: "A long Codex thread flattens every direction into one list of chats.",
+    solution: "A spatial workspace that keeps each real fork, and lets you return to it.",
+    tech: ["Electron", "Codex", "TypeScript"],
+    url: "https://github.com/waynewangyuxuan/Peel",
+    featured: true,
   },
 ];
 
 export const experience = [
   {
-    company: "ByteDance",
+    company: "TikTok",
+    role: "TikTok Ads customer support agent",
+    period: "Jun – Sep 2026",
+    location: "San Jose, CA",
+    highlights: ["Support-ticket agents"],
+  },
+  {
+    company: "TikTok Ads",
     role: "Software Engineer Intern",
     period: "Jun – Sep 2025",
     location: "San Jose, CA",

@@ -8,12 +8,11 @@ import { education } from "@/lib/content";
 const info = {
   timeline: [
     {
-      period: "Jun 2026 - Present",
-      current: true,
-      company: { en: "ByteDance · TikTok Ads", zh: "字节跳动 · TikTok Ads" },
+      period: "Jun 2026 - Sep 2026",
+      company: { en: "TikTok", zh: "TikTok" },
       role: {
-        en: "AI Agent Engineer · San Jose",
-        zh: "AI Agent 工程师 · San Jose",
+        en: "TikTok Ads customer support agent · San Jose",
+        zh: "TikTok Ads 客服 Agent · San Jose",
       },
       description: {
         en: "Agents that read, route, and resolve support tickets",
@@ -22,7 +21,7 @@ const info = {
     },
     {
       period: "Jun 2025 - Sep 2025",
-      company: { en: "ByteDance", zh: "字节跳动" },
+      company: { en: "TikTok Ads", zh: "TikTok Ads" },
       role: { en: "Software Engineer Intern", zh: "软件工程实习" },
       description: {
         en: "AI that answers 'how's my ad doing?'",
@@ -135,11 +134,11 @@ export function Hero() {
                     style={lang === "zh" ? { fontFamily: "var(--font-cn-body)" } : {}}
                   >
                     {edu.degree[lang]} @ {edu.school[lang]}
-                    {edu.note && (
-                      <span className="ml-2 text-xs text-[var(--muted)] italic">
-                        {edu.note[lang]}
-                      </span>
-                    )}
+                {edu.note && (
+                  <span className="ml-2 whitespace-nowrap text-xs text-[var(--muted)] italic">
+                    {edu.note[lang]}
+                  </span>
+                )}
                   </p>
                   <p className="mono text-xs text-[var(--gray-600)]">{edu.period}</p>
                 </div>
