@@ -80,6 +80,23 @@ const projectsData: Project[] = [
       },
     ],
   },
+  {
+    slug: "where2meet",
+    name: "Where2Meet",
+    line: {
+      en: "Meet in the middle — fair by travel time.",
+      zh: "在正中间见面——按路程时间公平选点。",
+    },
+    url: "https://www.where2meet.org/",
+    place: "where2meet.org",
+    images: [
+      {
+        src: "/projects/where2meet.png",
+        alt: "Where2Meet landing, meeting form beside a fair travel-time diagram",
+        label: { en: "Where2Meet", zh: "Where2Meet" },
+      },
+    ],
+  },
 ];
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
@@ -130,15 +147,21 @@ function ProjectImages({ images, lang }: { images: ProjectImage[]; lang: Lang })
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="block w-full cursor-zoom-in"
+        className="group block w-full cursor-zoom-in rounded-xl border border-[var(--gray-300)] bg-[var(--paper)] p-3 md:p-4"
         aria-label={lang === "en" ? `Enlarge ${image.label.en}` : `放大${image.label.zh}`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image.src}
-          alt={image.alt}
-          className="w-full rounded-lg border border-[var(--border)]"
-        />
+        <span className="relative block overflow-hidden rounded-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image.src}
+            alt={image.alt}
+            className="relative z-0 block w-full"
+          />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 bg-[var(--ink)] opacity-[0.14] transition-opacity duration-300 ease-out group-hover:opacity-0"
+          />
+        </span>
       </button>
 
       {open && (
@@ -150,12 +173,14 @@ function ProjectImages({ images, lang }: { images: ProjectImage[]; lang: Lang })
           aria-modal="true"
           aria-label={image.label[lang]}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="max-h-full max-w-full rounded-lg border border-[var(--border)] cursor-zoom-out"
-          />
+          <div className="max-h-full max-w-full overflow-hidden rounded-xl border border-[var(--gray-300)] bg-[var(--paper)] p-3 md:p-4 cursor-zoom-out">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="block max-h-[calc(100vh-6rem)] max-w-full rounded-md md:max-h-[calc(100vh-8rem)]"
+            />
+          </div>
         </div>
       )}
     </div>

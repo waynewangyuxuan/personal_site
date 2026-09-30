@@ -75,12 +75,12 @@ export const projects = [
   {
     slug: "where2meet",
     name: "Where2Meet",
-    oneLiner: "Fair meeting point finder for distributed groups",
+    oneLiner: "Meet in the middle — fair by travel time.",
     problem: "Finding equitable meeting locations is surprisingly hard.",
-    solution: "Algorithm that optimizes for fairness across all participants.",
+    solution: "Compare routes by travel time so nobody gets a much longer trip.",
     tech: ["React", "Maps API", "Optimization"],
     url: "https://www.where2meet.org/",
-    featured: false,
+    featured: true,
   },
   {
     slug: "peel",
