@@ -7,6 +7,7 @@ import { useTheme } from "@/lib/theme";
 const lightBg: Record<string, string> = {
   "/": "#fafaf9",
   "/projects": "#f0e8df",
+  "/pianke": "#f0e8df",
   "/research": "#e8ecf2",
   "/writing": "#f0ede4",
   "/writings": "#f0ede4",
@@ -15,6 +16,7 @@ const lightBg: Record<string, string> = {
 const darkBg: Record<string, string> = {
   "/": "#1a1918",
   "/projects": "#23201c",
+  "/pianke": "#23201c",
   "/research": "#1c1f25",
   "/writing": "#2d2a24",
   "/writings": "#2d2a24",
