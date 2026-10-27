@@ -92,7 +92,7 @@ const projectsData: Project[] = [
     images: [
       {
         src: "/projects/where2meet.png",
-        alt: "Where2Meet landing, meeting form beside a fair travel-time diagram",
+        alt: "Where2Meet landing, meeting form beside a map of everyone's locations",
         label: { en: "Where2Meet", zh: "Where2Meet" },
       },
     ],
