@@ -18,6 +18,8 @@ export interface ProjectImage {
 interface Project {
   slug: string;
   name: string;
+  // Shown in Chinese when the name differs, e.g. Pianke / 片刻.
+  nameZh?: string;
   line: Record<Lang, string>;
   url: string;
   place: string;
@@ -27,7 +29,8 @@ interface Project {
 const projectsData: Project[] = [
   {
     slug: "pianke",
-    name: "片刻",
+    name: "Pianke",
+    nameZh: "片刻",
     line: {
       en: "Turn Bilibili videos into text you can read, question and play back.",
       zh: "把 B 站视频变成能读、能问、能回看的文字。",
@@ -38,12 +41,12 @@ const projectsData: Project[] = [
     images: [
       {
         src: "/projects/pianke-read.jpg",
-        alt: "Pianke reading a close-reading summary with key frames in the text",
+        alt: "Pianke reading a video about the Mac Studio: a summary in sections with key frames",
         label: { en: "Read", zh: "阅读" },
       },
       {
         src: "/projects/pianke-watch.jpg",
-        alt: "Pianke with the player on the left and the text on the right",
+        alt: "Pianke answering a question beside the player, with the summary on the right",
         label: { en: "Watch and ask", zh: "边看边问" },
       },
     ],
@@ -228,7 +231,7 @@ export function Projects() {
             <>
               <div className="flex items-baseline justify-between gap-6 mb-2">
                 <h3 className="text-2xl font-medium tracking-tight group-hover:opacity-70 transition-opacity">
-                  {project.name}
+                  {lang === "zh" && project.nameZh ? project.nameZh : project.name}
                 </h3>
                 <span className="mono text-xs text-[var(--gray-600)] shrink-0">
                   {project.place} {internal ? "→" : "↗"}
