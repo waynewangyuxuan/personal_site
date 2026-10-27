@@ -29,6 +29,8 @@ export function Header() {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
+    // A project's own page sits under Projects.
+    if (href === "/projects" && pathname.startsWith("/pianke")) return true;
     return pathname.startsWith(href);
   };
 

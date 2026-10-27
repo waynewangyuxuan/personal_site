@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 type Lang = "en" | "zh";
 
-interface ProjectImage {
+export interface ProjectImage {
   src: string;
   alt: string;
   label: Record<Lang, string>;
@@ -24,6 +25,29 @@ interface Project {
 }
 
 const projectsData: Project[] = [
+  {
+    slug: "pianke",
+    name: "片刻",
+    line: {
+      en: "Turn Bilibili videos into text you can read, question and play back.",
+      zh: "把 B 站视频变成能读、能问、能回看的文字。",
+    },
+    // A page on this site, with the download.
+    url: "/pianke/",
+    place: "Mac App",
+    images: [
+      {
+        src: "/projects/pianke-read.jpg",
+        alt: "Pianke reading a close-reading summary with key frames in the text",
+        label: { en: "Read", zh: "阅读" },
+      },
+      {
+        src: "/projects/pianke-watch.jpg",
+        alt: "Pianke with the player on the left and the text on the right",
+        label: { en: "Watch and ask", zh: "边看边问" },
+      },
+    ],
+  },
   {
     slug: "peel",
     name: "Peel",
@@ -101,7 +125,7 @@ const projectsData: Project[] = [
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-function ProjectImages({ images, lang }: { images: ProjectImage[]; lang: Lang }) {
+export function ProjectImages({ images, lang }: { images: ProjectImage[]; lang: Lang }) {
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
   const image = images[active];
@@ -197,27 +221,17 @@ export function Projects() {
       </ScrollReveal>
 
       <div className="max-w-[var(--content-max-width)]">
-        {projectsData.map((project, index) => (
-          <motion.article
-            key={project.slug}
-            className="py-8 border-t border-[var(--border)] last:border-b"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.5, delay: 0.05 * index, ease }}
-          >
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block"
-            >
+        {projectsData.map((project, index) => {
+          // A page on this site opens in place; anything else opens in a new tab.
+          const internal = project.url.startsWith("/");
+          const heading = (
+            <>
               <div className="flex items-baseline justify-between gap-6 mb-2">
                 <h3 className="text-2xl font-medium tracking-tight group-hover:opacity-70 transition-opacity">
                   {project.name}
                 </h3>
                 <span className="mono text-xs text-[var(--gray-600)] shrink-0">
-                  {project.place} ↗
+                  {project.place} {internal ? "→" : "↗"}
                 </span>
               </div>
               <p
@@ -226,10 +240,26 @@ export function Projects() {
               >
                 {project.line[lang]}
               </p>
-            </a>
-            {project.images && <ProjectImages images={project.images} lang={lang} />}
-          </motion.article>
-        ))}
+            </>
+          );
+          return (
+            <motion.article
+              key={project.slug}
+              className="py-8 border-t border-[var(--border)] last:border-b"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: 0.05 * index, ease }}
+            >
+              {internal ? (
+                <Link href={project.url} className="group block">{heading}</Link>
+              ) : (
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="group block">{heading}</a>
+              )}
+              {project.images && <ProjectImages images={project.images} lang={lang} />}
+            </motion.article>
+          );
+        })}
       </div>
     </section>
   );
