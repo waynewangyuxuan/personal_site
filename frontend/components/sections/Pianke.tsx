@@ -15,15 +15,15 @@ const copy = {
   back: { en: "Projects", zh: "项目" },
   name: { en: "Pianke 片刻", zh: "片刻" },
   idea: {
-    en: "A good Bilibili video keeps its ideas locked in speech: you watch it start to finish, and finding one line again is hard. Pianke turns it into text you can read in minutes and question as you go, and every line takes you back to its moment in the video.",
-    zh: "B 站上的好视频，内容都锁在声音里：只能从头看到尾，想回头找一句话也难。片刻把它变成文字，几分钟读完，边读边问，每一句都能点回视频里的那一刻。",
+    en: "A lot of good Bilibili videos are ten minutes of someone explaining something, and the only way to find a line again is to scrub through it. Pianke turns the video into a transcript. Reading is faster than watching, and when you want to hear a line, its time stamp plays it.",
+    zh: "B 站上很多讲东西的视频，看一遍要十几分钟，想回头找一句话只能拖进度条。片刻把视频转成文字稿，读比看快；读到哪句想听原话，点时间就跳回去。",
   },
   download: { en: "Download for Mac", zh: "下载 Mac 版" },
   requirements: { en: "Apple silicon · macOS 26.2 or later · Free", zh: "Apple 芯片 · macOS 26.2 或更新 · 免费" },
   howTitle: { en: "How it works", zh: "怎么用" },
   privacy: {
     en: "Transcription runs on your Mac. Only summaries and questions send text to the AI service you chose, with your own key.",
-    zh: "转写在你的 Mac 上完成。只有摘要和提问会把文字发给你选的 AI 服务，用的是你自己的 key。",
+    zh: "转写在本机完成。只有摘要和提问会把文字发给你选的 AI 服务，用你自己的 key。",
   },
 } satisfies Record<string, Text>;
 
@@ -36,26 +36,26 @@ const steps: { title: Text; body: Text; image: ProjectImage; wide?: boolean }[] 
   {
     title: { en: "Set up once", zh: "准备一次" },
     body: {
-      en: "Sign in to Bilibili from the menu bar, then add your API key for Claude, OpenAI or DeepSeek in Settings → AI services.",
-      zh: "在菜单栏登录哔哩哔哩，再到「设置 → AI 服务」填上你的 API key：Claude、OpenAI 或 DeepSeek 都行。",
+      en: "Sign in to Bilibili, then put an API key for Claude, OpenAI or DeepSeek in Settings. The models it can use show up on their own.",
+      zh: "登录 B 站，再在设置里填一个 AI 的 API key，Claude、OpenAI 或 DeepSeek 都行。填完会自动列出能用的模型。",
     },
-    image: { src: "/projects/pianke-ai.jpg", alt: "Settings, AI services: choose Claude, OpenAI or DeepSeek and a model", label: { en: "AI services", zh: "AI 服务" } },
+    image: { src: "/projects/pianke-ai.jpg", alt: "Settings, AI: Claude, OpenAI and DeepSeek as icons, a key field, and the list of models", label: { en: "AI", zh: "AI" } },
   },
   {
     title: { en: "Paste a link", zh: "粘贴一个链接" },
     body: {
-      en: "Copy a Bilibili video link and paste it into Add video. That is the whole input; Pianke turns it into text on your Mac.",
-      zh: "复制一个 B 站视频链接，粘贴进「添加视频」。输入就这么多，片刻会在你的 Mac 上把它变成文字。",
+      en: "Press +, paste the link, and transcription starts on your own Mac. A ten-minute video takes a minute or two.",
+      zh: "点 +，粘贴视频链接，转写就开始了，在你自己的 Mac 上跑。十分钟的视频一两分钟转完。",
     },
-    image: { src: "/projects/pianke-add.jpg", alt: "Add video, with a Bilibili link pasted in", label: { en: "Add video", zh: "添加视频" } },
+    image: { src: "/projects/pianke-add.jpg", alt: "The add form over the reader: one field with a Bilibili link in it", label: { en: "Add a video", zh: "添加视频" } },
   },
   {
     title: { en: "Read and ask", zh: "读，然后问" },
     body: {
-      en: "Read the summary in sections, or ask while you watch. Answers cite the video, and every time stamp plays that moment.",
-      zh: "读分章节的精读摘要，或者边看边问。回答都标着出处，点时间就播放那一刻。",
+      en: "Then read. The summary comes in sections with the key frames in the text. Ask anything next to the player; the answer cites the video, and each time stamp plays that part.",
+      zh: "转完直接读。摘要按章节分，关键画面截在正文里；有疑问就在旁边问，回答带出处，点时间就回到视频那一段。",
     },
-    image: { src: "/projects/pianke-watch.jpg", alt: "Watch and ask: a question answered beside the player", label: { en: "Watch and ask", zh: "边看边问" } },
+    image: { src: "/projects/pianke-watch.jpg", alt: "Watch and ask: the player and an answered question on the left, the summary on the right", label: { en: "Watch and ask", zh: "边看边问" } },
     wide: true,
   },
 ];
